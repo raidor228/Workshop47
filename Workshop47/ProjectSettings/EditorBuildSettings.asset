@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Workshop47/Scenes/MainMenu.unity
     guid: b5d101c3234f3a441847dea5c9a10fbd
   - enabled: 1
-    path: Assets/Workshop47/Scenes/World.unity
+    path: Assets/Workshop47/Scenes/Settlement.unity
     guid: ae63865256321674193da507e5ffc580
   - enabled: 0
     path: Assets/URP Example/Scenes/Terminal/TerminalScene.unity
