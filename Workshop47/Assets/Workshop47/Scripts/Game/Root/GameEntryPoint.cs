@@ -5,6 +5,9 @@ using Workshop47.Scripts.Game.MainMenu.Root;
 using Workshop47.Scripts.Game.World.Root;
 using Workshop47.Scripts.Utils;
 using R3;
+using Workshop47.Scripts.DI;
+using Workshop47.Scripts.Game.Settings;
+using Workshop47.Scripts.Game.State;
 
 namespace Workshop47.Scripts.Game.Root
 {
@@ -13,7 +16,9 @@ namespace Workshop47.Scripts.Game.Root
         private static GameEntryPoint _instance;
         private readonly Coroutines _coroutines;
         private readonly UIRootView _uiRoot;
-
+        private readonly DIContainer _rootContainer = new();
+        private DIContainer _cachedSceneContainer;
+        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void AutostartGame()
         {
@@ -29,6 +34,14 @@ namespace Workshop47.Scripts.Game.Root
             var prefabUIRoot = Resources.Load<UIRootView>("UIRoot");
             _uiRoot = Object.Instantiate(prefabUIRoot);
             Object.DontDestroyOnLoad(_uiRoot.gameObject);
+            _rootContainer.RegisterInstance(_uiRoot);
+            
+            var settingsProvider = new SettingsProvider();
+            _rootContainer.RegisterInstance<ISettingsProvider>(settingsProvider);
+
+            var gameStateProvider = new JsonGameStateProvider();
+            gameStateProvider.LoadSettingsState();
+            _rootContainer.RegisterInstance<IGameStateProvider>(gameStateProvider);
         }
 
         private void RunGame()
@@ -60,7 +73,7 @@ namespace Workshop47.Scripts.Game.Root
         private IEnumerator LoadAndStartWorld(WorldEnterParams enterParams)
         {
             _uiRoot.ShowLoadingScreen();
-
+            
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(Scenes.WORLD);
 
