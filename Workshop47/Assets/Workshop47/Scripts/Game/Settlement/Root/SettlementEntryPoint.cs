@@ -2,15 +2,15 @@
 using UnityEngine;
 using Workshop47.Scripts.Game.MainMenu.Root;
 using Workshop47.Scripts.Game.Root;
-using Workshop47.Scripts.Game.World.Root.View;
+using Workshop47.Scripts.Game.Settlement.Root.View;
 
-namespace Workshop47.Scripts.Game.World.Root
+namespace Workshop47.Scripts.Game.Settlement.Root
 {
-    public class WorldEntryPoint : MonoBehaviour
+    public class SettlementEntryPoint : MonoBehaviour
     {
-        [SerializeField] private UIWorldRootBinder _sceneUIRootPrefab;
+        [SerializeField] private UISettlementRootBinder _sceneUIRootPrefab;
 
-        public Observable<WorldExitParams> Run(UIRootView uiRoot, WorldEnterParams enterParams)
+        public Observable<SettlementExitParams> Run(UIRootView uiRoot, SettlementEnterParams enterParams)
         {
             var uiScene = Instantiate(_sceneUIRootPrefab);
             uiRoot.AttachSceneUI(uiScene.gameObject);
@@ -19,7 +19,7 @@ namespace Workshop47.Scripts.Game.World.Root
             uiScene.Bind(exitSceneSignalSubj);
 
             var mainMenuEnterParams = new MainMenuEnterParams();
-            var exitParams = new WorldExitParams(mainMenuEnterParams);
+            var exitParams = new SettlementExitParams(mainMenuEnterParams);
             var exitToMainMenuSceneSignal = exitSceneSignalSubj.Select(_ => exitParams);
 
             return exitToMainMenuSceneSignal;

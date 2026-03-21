@@ -1,12 +1,12 @@
 ﻿using Workshop47.Scripts.Game.MainMenu.Root;
 
-namespace Workshop47.Scripts.Game.World.Root
+namespace Workshop47.Scripts.Game.Settlement.Root
 {
-    public class WorldExitParams
+    public class SettlementExitParams
     {
         public MainMenuEnterParams MainMenuEnterParams { get; }
 
-        public WorldExitParams(MainMenuEnterParams mainMenuEnterParams)
+        public SettlementExitParams(MainMenuEnterParams mainMenuEnterParams)
         {
             MainMenuEnterParams = mainMenuEnterParams;
         }

@@ -1,9 +1,9 @@
-﻿using R3;
-using UnityEngine;
+﻿using UnityEngine;
+using R3;
 
-namespace Workshop47.Scripts.Game.World.Root.View
+namespace Workshop47.Scripts.Game.Settlement.Root.View
 {
-    public class UIWorldRootBinder : MonoBehaviour
+    public class UISettlementRootBinder : MonoBehaviour
     {
         private Subject<Unit> _exitSceneSignalSubj;
 

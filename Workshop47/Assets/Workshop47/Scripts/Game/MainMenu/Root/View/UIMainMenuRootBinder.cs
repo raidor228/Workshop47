@@ -7,7 +7,7 @@ namespace Workshop47.Scripts.Game.MainMenu.Root.View
     {
         private Subject<Unit> _exitSceneSignalSubj;
 
-        public void HandleGoToGameplayButtonClick()
+        public void HandleGoToSettlementButtonClick()
         {
             _exitSceneSignalSubj?.OnNext(Unit.Default);
         }

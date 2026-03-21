@@ -2,7 +2,7 @@
 using UnityEngine;
 using Workshop47.Scripts.Game.MainMenu.Root.View;
 using Workshop47.Scripts.Game.Root;
-using Workshop47.Scripts.Game.World.Root;
+using Workshop47.Scripts.Game.Settlement.Root;
 
 namespace Workshop47.Scripts.Game.MainMenu.Root
 {
@@ -18,8 +18,8 @@ namespace Workshop47.Scripts.Game.MainMenu.Root
             var exitSignalSubj = new Subject<Unit>();
             uiScene.Bind(exitSignalSubj);
 
-            var worldEnterParams = new WorldEnterParams();
-            var mainMenuExitParams = new MainMenuExitParams(worldEnterParams);
+            var settlementEnterParams = new SettlementEnterParams();
+            var mainMenuExitParams = new MainMenuExitParams(settlementEnterParams);
             var exitToGameplaySceneSignal = exitSignalSubj.Select(_ => mainMenuExitParams);
             
             return exitToGameplaySceneSignal;

@@ -2,11 +2,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Workshop47.Scripts.Game.MainMenu.Root;
-using Workshop47.Scripts.Game.World.Root;
 using Workshop47.Scripts.Utils;
 using R3;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Settings;
+using Workshop47.Scripts.Game.Settlement.Root;
 using Workshop47.Scripts.Game.State;
 
 namespace Workshop47.Scripts.Game.Root
@@ -49,10 +49,10 @@ namespace Workshop47.Scripts.Game.Root
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;
 
-            if (sceneName == Scenes.WORLD)
+            if (sceneName == Scenes.SETTLEMENT)
             {
-                var enterParams = new WorldEnterParams();
-                _coroutines.StartCoroutine(LoadAndStartWorld(enterParams));
+                var enterParams = new SettlementEnterParams();
+                _coroutines.StartCoroutine(LoadAndStartSettlement(enterParams));
                 return;
             }
 
@@ -70,19 +70,19 @@ namespace Workshop47.Scripts.Game.Root
             _coroutines.StartCoroutine(LoadAndStartMainMenu());
         }
 
-        private IEnumerator LoadAndStartWorld(WorldEnterParams enterParams)
+        private IEnumerator LoadAndStartSettlement(SettlementEnterParams enterParams)
         {
             _uiRoot.ShowLoadingScreen();
             
             yield return LoadScene(Scenes.BOOT);
-            yield return LoadScene(Scenes.WORLD);
+            yield return LoadScene(Scenes.SETTLEMENT);
 
             yield return new WaitForSeconds(1);
 
-            var sceneEntryPoint = Object.FindFirstObjectByType<WorldEntryPoint>();
-            sceneEntryPoint.Run(_uiRoot, enterParams).Subscribe(worldExitParams =>
+            var sceneEntryPoint = Object.FindFirstObjectByType<SettlementEntryPoint>();
+            sceneEntryPoint.Run(_uiRoot, enterParams).Subscribe(settlementExitParams =>
             {
-                _coroutines.StartCoroutine(LoadAndStartMainMenu(worldExitParams.MainMenuEnterParams));
+                _coroutines.StartCoroutine(LoadAndStartMainMenu(settlementExitParams.MainMenuEnterParams));
             });
 
             _uiRoot.HideLoadingScreen();
@@ -99,10 +99,10 @@ namespace Workshop47.Scripts.Game.Root
             sceneEntryPoint.Run(_uiRoot, enterParams).Subscribe(mainMenuExitParams =>
             {
                 var targetSceneName = mainMenuExitParams.TargetSceneEnterParams.SceneName;
-                if (targetSceneName == Scenes.WORLD)
+                if (targetSceneName == Scenes.SETTLEMENT)
                 {
                     _coroutines.StartCoroutine(
-                        LoadAndStartWorld(mainMenuExitParams.TargetSceneEnterParams.As<WorldEnterParams>()));
+                        LoadAndStartSettlement(mainMenuExitParams.TargetSceneEnterParams.As<SettlementEnterParams>()));
                 }
             });
 
