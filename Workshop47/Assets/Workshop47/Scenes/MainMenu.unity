@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522227250}
   - component: {fileID: 522227249}
+  - component: {fileID: 522227251}
   m_Layer: 0
   m_Name: EntryPoint
   m_TagString: Untagged
@@ -275,7 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cc981ef89a4c6a8b778e7aa9eee90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.MainMenu.Root.MainMenuEntryPoint
-  _sceneUIRootPrefab: {fileID: 2572580741451966830, guid: c8cbbd17465f9c8438196a2669f8abbe, type: 3}
+  _sceneUIRootPrefab: {fileID: 4194404027554680968, guid: dd8eb1f183e4f6046b1c2840a41fc862, type: 3}
+  _worldRootBinder: {fileID: 522227251}
 --- !u!4 &522227250
 Transform:
   m_ObjectHideFlags: 0
@@ -291,6 +293,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &522227251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522227248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d162a53c02a0421bad4abfd61770bb15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.MainMenu.Root.View.WorldMainMenuRootBinder
 --- !u!1 &2122114098
 GameObject:
   m_ObjectHideFlags: 0

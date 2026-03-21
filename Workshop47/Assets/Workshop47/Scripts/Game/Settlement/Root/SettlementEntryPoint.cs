@@ -1,28 +1,52 @@
 ﻿using R3;
 using UnityEngine;
+using Workshop47.Scripts.DI;
+using Workshop47.Scripts.Game.Common;
 using Workshop47.Scripts.Game.MainMenu.Root;
 using Workshop47.Scripts.Game.Root;
 using Workshop47.Scripts.Game.Settlement.Root.View;
+using Workshop47.Scripts.Game.Settlement.View.UI;
 
 namespace Workshop47.Scripts.Game.Settlement.Root
 {
     public class SettlementEntryPoint : MonoBehaviour
     {
         [SerializeField] private UISettlementRootBinder _sceneUIRootPrefab;
-
-        public Observable<SettlementExitParams> Run(UIRootView uiRoot, SettlementEnterParams enterParams)
+        [SerializeField] private WorldSettlementRootBinder _worldRootBinder;
+        
+        public Observable<SettlementExitParams> Run(DIContainer settlementContainer, SettlementEnterParams enterParams)
         {
-            var uiScene = Instantiate(_sceneUIRootPrefab);
-            uiRoot.AttachSceneUI(uiScene.gameObject);
-
-            var exitSceneSignalSubj = new Subject<Unit>();
-            uiScene.Bind(exitSceneSignalSubj);
+            SettlementRegistrations.Register(settlementContainer, enterParams);
+            var settlementViewModelsContainer = new DIContainer(settlementContainer);
+            SettlementViewModelsRegistrations.Register(settlementViewModelsContainer);
+            
+            InitWorld(settlementViewModelsContainer);
+            InitUI(settlementViewModelsContainer);
 
             var mainMenuEnterParams = new MainMenuEnterParams();
             var exitParams = new SettlementExitParams(mainMenuEnterParams);
-            var exitToMainMenuSceneSignal = exitSceneSignalSubj.Select(_ => exitParams);
+            var exitSceneRequest = settlementContainer.Resolve<Subject<Unit>>(AppConstants.EXIT_SCENE_REQUEST_TAG);
+            var exitToMainMenuSceneSignal = exitSceneRequest.Select(_ => exitParams);
 
             return exitToMainMenuSceneSignal;
+        }
+        
+        private void InitWorld(DIContainer viewsContainer)
+        {
+            _worldRootBinder.Bind(viewsContainer.Resolve<WorldSettlementRootViewModel>());
+        }
+
+        private void InitUI(DIContainer viewsContainer)
+        {
+            var uiRoot = viewsContainer.Resolve<UIRootView>();
+            var uiSceneRootBinder = Instantiate(_sceneUIRootPrefab);
+            uiRoot.AttachSceneUI(uiSceneRootBinder.gameObject);
+            
+            var uiSceneRootViewModel = viewsContainer.Resolve<UISettlementRootViewModel>();
+            uiSceneRootBinder.Bind(uiSceneRootViewModel);
+            
+            var uiManager = viewsContainer.Resolve<SettlementUIManager>();
+            uiManager.OpenScreenSettlement();
         }
     }
 }

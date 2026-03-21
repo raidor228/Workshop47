@@ -44,8 +44,10 @@ namespace Workshop47.Scripts.Game.Root
             _rootContainer.RegisterInstance<IGameStateProvider>(gameStateProvider);
         }
 
-        private void RunGame()
+        private async void RunGame()
         {
+            await _rootContainer.Resolve<ISettingsProvider>().LoadGameSettings();
+            
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;
 
@@ -73,14 +75,20 @@ namespace Workshop47.Scripts.Game.Root
         private IEnumerator LoadAndStartSettlement(SettlementEnterParams enterParams)
         {
             _uiRoot.ShowLoadingScreen();
+            _cachedSceneContainer?.Dispose();
             
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(Scenes.SETTLEMENT);
 
             yield return new WaitForSeconds(1);
 
+            var isGameStateLoaded = false;
+            _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+            yield return new WaitUntil(() => isGameStateLoaded);
+            
             var sceneEntryPoint = Object.FindFirstObjectByType<SettlementEntryPoint>();
-            sceneEntryPoint.Run(_uiRoot, enterParams).Subscribe(settlementExitParams =>
+            var settlementContainer = _cachedSceneContainer = new DIContainer(_rootContainer);
+            sceneEntryPoint.Run(settlementContainer, enterParams).Subscribe(settlementExitParams =>
             {
                 _coroutines.StartCoroutine(LoadAndStartMainMenu(settlementExitParams.MainMenuEnterParams));
             });
@@ -91,12 +99,14 @@ namespace Workshop47.Scripts.Game.Root
         private IEnumerator LoadAndStartMainMenu(MainMenuEnterParams enterParams = null)
         {
             _uiRoot.ShowLoadingScreen();
-
+            _cachedSceneContainer?.Dispose();
+            
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(Scenes.MAIN_MENU);
 
             var sceneEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
-            sceneEntryPoint.Run(_uiRoot, enterParams).Subscribe(mainMenuExitParams =>
+            var mainMenuContainer = _cachedSceneContainer = new DIContainer(_rootContainer);
+            sceneEntryPoint.Run(mainMenuContainer, enterParams).Subscribe(mainMenuExitParams =>
             {
                 var targetSceneName = mainMenuExitParams.TargetSceneEnterParams.SceneName;
                 if (targetSceneName == Scenes.SETTLEMENT)
