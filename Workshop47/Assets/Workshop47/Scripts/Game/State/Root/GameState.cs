@@ -9,6 +9,7 @@ namespace Workshop47.Scripts.Game.State.Root
     public class GameState
     {
         public readonly ReactiveProperty<int> CurrentMapId = new();
+        public readonly ReactiveProperty<int> ControllableEntityId = new();
         
         public ObservableList<Resource> Resources { get; } = new();
         public ObservableList<Map> Maps { get; } = new();
@@ -23,6 +24,7 @@ namespace Workshop47.Scripts.Game.State.Root
             InitResources(gameStateData);
             
             CurrentMapId.Subscribe(newCurrentMapId => { gameStateData.CurrentMapId = newCurrentMapId; });
+            ControllableEntityId.Subscribe(newControllableEntityId => { gameStateData.ControllableEntityId = newControllableEntityId; });
         }
 
         public int CreateEntityId()

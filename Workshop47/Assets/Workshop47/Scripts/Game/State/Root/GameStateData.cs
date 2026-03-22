@@ -9,6 +9,7 @@ namespace Workshop47.Scripts.Game.State.Root
     {
         public int GlobalEntityId { get; set; }
         public int CurrentMapId { get; set; }
+        public int ControllableEntityId { get; set; }
         public List<ResourceData> Resources { get; set; }
         public List<MapData> Maps { get; set; }
         
