@@ -25,7 +25,7 @@ namespace Workshop47.Scripts.Game.MainMenu.Root
             InitWorld(mainMenuViewModelsContainer);
             InitUI(mainMenuViewModelsContainer);
             
-            var settlementEnterParams = new SettlementEnterParams();
+            var settlementEnterParams = new SettlementEnterParams(0);
             var exitParams = new MainMenuExitParams(settlementEnterParams);
             var exitSceneRequest = mainMenuContainer.Resolve<Subject<Unit>>(AppConstants.EXIT_SCENE_REQUEST_TAG);
             var exitToMainMenuSceneSignal = exitSceneRequest.Select(_ => exitParams);

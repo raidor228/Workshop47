@@ -53,7 +53,7 @@ namespace Workshop47.Scripts.Game.Root
 
             if (sceneName == Scenes.SETTLEMENT)
             {
-                var enterParams = new SettlementEnterParams();
+                var enterParams = new SettlementEnterParams(0);
                 _coroutines.StartCoroutine(LoadAndStartSettlement(enterParams));
                 return;
             }

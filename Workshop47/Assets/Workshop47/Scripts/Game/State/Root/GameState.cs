@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using ObservableCollections;
-using Workshop47.Scripts.Game.State.Entities;
 using Workshop47.Scripts.Game.State.GameResources;
 using Workshop47.Scripts.Game.State.Maps;
 using R3;
@@ -12,7 +11,6 @@ namespace Workshop47.Scripts.Game.State.Root
         public readonly ReactiveProperty<int> CurrentMapId = new();
         
         public ObservableList<Resource> Resources { get; } = new();
-        public ObservableList<Entity> Entities { get; } = new();
         public ObservableList<Map> Maps { get; } = new();
 
         private readonly GameStateData _gameStateData;
@@ -23,7 +21,6 @@ namespace Workshop47.Scripts.Game.State.Root
             
             InitMaps(gameStateData);
             InitResources(gameStateData);
-            InitEntities(gameStateData);
             
             CurrentMapId.Subscribe(newCurrentMapId => { gameStateData.CurrentMapId = newCurrentMapId; });
         }
@@ -66,24 +63,6 @@ namespace Workshop47.Scripts.Game.State.Root
                 var removedResource = e.Value;
                 var removedResourceData = gameStateData.Resources.FirstOrDefault(b => b.ResourceType == removedResource.ResourceType);
                 gameStateData.Resources.Remove(removedResourceData);
-            });
-        }
-        
-        private void InitEntities(GameStateData gameStateData)
-        {
-            gameStateData.Entities.ForEach(entityData => Entities.Add(EntitiesFactory.CreateEntity(entityData)));
-            
-            Entities.ObserveAdd().Subscribe(e =>
-            {
-                var addedEntity = e.Value;
-                gameStateData.Entities.Add(addedEntity.Origin);
-            });
-            
-            Entities.ObserveRemove().Subscribe(e =>
-            {
-                var removedEntity = e.Value;
-                var removedEntityData = gameStateData.Entities.FirstOrDefault(b => b.UniqueId == removedEntity.UniqueId);
-                gameStateData.Entities.Remove(removedEntityData);
             });
         }
     }

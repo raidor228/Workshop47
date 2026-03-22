@@ -1,4 +1,6 @@
-﻿using Workshop47.Scripts.Game.State.Commands;
+﻿using System.Linq;
+using UnityEngine;
+using Workshop47.Scripts.Game.State.Commands;
 using Workshop47.Scripts.Game.State.Entities;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Characters;
 using Workshop47.Scripts.Game.State.Root;
@@ -16,6 +18,13 @@ namespace Workshop47.Scripts.Game.Settlement.Commands.Handlers
         
         public bool Handle(CmdPlaceEntity command)
         {
+            var currentMap = _gameState.Maps.FirstOrDefault(m => m.Id == _gameState.CurrentMapId.CurrentValue);
+            if (currentMap == null)
+            {
+                Debug.LogError($"Couldn't find MapState for id: {_gameState.CurrentMapId.CurrentValue}");
+                return false;
+            }
+            
             var entityConfigId = command.EntityConfigId;
             var entityType = command.EntityType;
             var entityPosition = command.Position;
@@ -31,7 +40,7 @@ namespace Workshop47.Scripts.Game.Settlement.Commands.Handlers
             createdEntityData.UniqueId = entityId;
             var createEntity = EntitiesFactory.CreateEntity(createdEntityData);
             
-            _gameState.Entities.Add(createEntity);
+            currentMap.Entities.Add(createEntity);
 
             return true;
         }

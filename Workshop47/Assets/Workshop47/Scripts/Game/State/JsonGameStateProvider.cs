@@ -6,6 +6,7 @@ using UnityEngine;
 using R3;
 using Workshop47.Scripts.Game.State.Entities;
 using Workshop47.Scripts.Game.State.GameResources;
+using Workshop47.Scripts.Game.State.Maps;
 using Workshop47.Scripts.Game.State.Root;
 using Workshop47.Scripts.Utils.Converters;
 
@@ -125,7 +126,7 @@ namespace Workshop47.Scripts.Game.State
             _gameStateOrigin = new GameStateData
             {
                 Resources = new List<ResourceData>(),
-                Entities = new List<EntityData>()
+                Maps = new List<MapData>()
             };
                 
             return new GameState(_gameStateOrigin);
