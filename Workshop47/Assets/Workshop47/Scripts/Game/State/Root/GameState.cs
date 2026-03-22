@@ -2,6 +2,7 @@
 using ObservableCollections;
 using Workshop47.Scripts.Game.State.Entities;
 using Workshop47.Scripts.Game.State.GameResources;
+using Workshop47.Scripts.Game.State.Maps;
 using R3;
 
 namespace Workshop47.Scripts.Game.State.Root
@@ -10,6 +11,7 @@ namespace Workshop47.Scripts.Game.State.Root
     {
         public ObservableList<Resource> Resources { get; } = new();
         public ObservableList<Entity> Entities { get; } = new();
+        public ObservableList<Map> Maps { get; } = new();
 
         private readonly GameStateData _gameStateData;
 
@@ -17,6 +19,7 @@ namespace Workshop47.Scripts.Game.State.Root
         {
             _gameStateData = gameStateData;
             
+            InitMaps(gameStateData);
             InitResources(gameStateData);
             InitEntities(gameStateData);
         }
@@ -24,6 +27,24 @@ namespace Workshop47.Scripts.Game.State.Root
         public int CreateEntityId()
         {
             return _gameStateData.CreateEntityId();
+        }
+        
+        private void InitMaps(GameStateData gameStateData)
+        {
+            gameStateData.Maps.ForEach(mapOrigin => Maps.Add(new Map(mapOrigin)));
+            
+            Maps.ObserveAdd().Subscribe(e =>
+            {
+                var addedMap = e.Value;
+                gameStateData.Maps.Add(addedMap.Origin);
+            });
+            
+            Maps.ObserveRemove().Subscribe(e =>
+            {
+                var removedMap = e.Value;
+                var removedMapState = gameStateData.Maps.FirstOrDefault(b => b.Id == removedMap.Id);
+                gameStateData.Maps.Remove(removedMapState);
+            });
         }
         
         private void InitResources(GameStateData gameStateData)
