@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Workshop47.Scripts.Game.Settings.Settlement.Entities;
+using Workshop47.Scripts.Game.Settings.Settlement.Maps;
 
 namespace Workshop47.Scripts.Game.Settings
 {
@@ -7,5 +8,6 @@ namespace Workshop47.Scripts.Game.Settings
     public class GameSettings : ScriptableObject
     {
         public EntitiesSettings EntitiesSettings;
+        public MapsSettings MapsSettings;
     }
 }
