@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7989551396423097201}
   - component: {fileID: 5860815116462297509}
   - component: {fileID: 884427457133515068}
+  - component: {fileID: 8288543850788929604}
   - component: {fileID: 7228981587669173894}
   m_Layer: 0
   m_Name: Character_bob_0
@@ -113,6 +114,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &8288543850788929604
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888807129307779709}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7228981587669173894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ff059406c3471e8e6d4a6b4eebcdfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settlement.View.Characters.CharacterBinder
+  _characterController: {fileID: 8288543850788929604}
