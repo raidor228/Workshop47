@@ -26,6 +26,7 @@ namespace Workshop47.Scripts.Game.Settlement.Root
 
             var cmd = new CommandProcessor(gameStateProvider);
             cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState));
+            cmd.RegisterHandler(new CmdCreateMapHandler(gameState, gameSettings));
             container.RegisterInstance<ICommandProcessor>(cmd);
 
             var loadingMapId = settlementEnterParams.MapId;
