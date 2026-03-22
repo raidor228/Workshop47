@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790a6124fbf846de89e03ff2d3198973, type: 3}
   m_Name: EntitiesSettings
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Settlement.Entities.EntitiesSettings
-  <Characters>k__BackingField: []
+  <Characters>k__BackingField:
+  - {fileID: 11400000, guid: eacf615265b9cab4bbc4b77fc56de75d, type: 2}

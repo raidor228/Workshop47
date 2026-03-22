@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f926c6fd32e44c80bb8aa5a6cbf2523c, type: 3}
   m_Name: BobCharacterSettings
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Settlement.Entities.Characters.CharacterSettings
-  <EntityType>k__BackingField: 0
-  <ConfigId>k__BackingField: 
-  <TitleLid>k__BackingField: 
-  <DescriptionLid>k__BackingField: 
-  <PrefabPath>k__BackingField: 
-  <Levels>k__BackingField: []
+  <EntityType>k__BackingField: 1
+  <ConfigId>k__BackingField: bob
+  <TitleLid>k__BackingField: Bob
+  <DescriptionLid>k__BackingField: Just a bob
+  <PrefabPath>k__BackingField: bob
+  <Levels>k__BackingField:
+  - {fileID: 11400000, guid: 3518aedba1a118449a1956c0535015f8, type: 2}

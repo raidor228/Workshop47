@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e6b75559844b0cbb94b2638c5f2f27, type: 3}
   m_Name: CharacterLevelSettings 1
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Settlement.Entities.Characters.CharacterLevelSettings
-  <Level>k__BackingField: 0
-  <PrefabSkinPath>k__BackingField: bob
+  <Level>k__BackingField: 1
+  <PrefabSkinPath>k__BackingField: bob1

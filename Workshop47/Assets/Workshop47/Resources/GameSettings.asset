@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b453f4c64bfc4c4899aa4f01c057b6d3, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.GameSettings
-  EntitiesSettings: {fileID: 0}
+  EntitiesSettings: {fileID: 11400000, guid: 35f46b03bf1450745aa057efd2724312, type: 2}

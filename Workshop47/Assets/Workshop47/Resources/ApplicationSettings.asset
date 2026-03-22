@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7596c6efdef44949f63d2a01fdfb327, type: 3}
   m_Name: ApplicationSettings
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.ApplicationSettings
-  MusicVolume: 0
-  SFXVolume: 0
+  MusicVolume: 100
+  SFXVolume: 100
