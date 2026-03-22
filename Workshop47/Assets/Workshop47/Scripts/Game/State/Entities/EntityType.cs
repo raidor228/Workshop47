@@ -1,0 +1,8 @@
+﻿namespace Workshop47.Scripts.Game.State.Entities
+{
+    public enum EntityType
+    {
+        Unknown = 0,
+        Character = 1
+    }
+}
