@@ -3,7 +3,10 @@ using Workshop47.Scripts.Game.Settings;
 using Workshop47.Scripts.Game.State;
 using Workshop47.Scripts.Game.State.Commands;
 using R3;
+using UnityEngine;
 using Workshop47.Scripts.Game.Common;
+using Workshop47.Scripts.Game.Settlement.Commands.Handlers;
+using Workshop47.Scripts.Game.Settlement.Services;
 
 namespace Workshop47.Scripts.Game.Settlement.Root
 {
@@ -19,14 +22,11 @@ namespace Workshop47.Scripts.Game.Settlement.Root
             container.RegisterInstance(AppConstants.EXIT_SCENE_REQUEST_TAG, new Subject<Unit>());
 
             var cmd = new CommandProcessor(gameStateProvider);
-            //cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState));
+            cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState));
             container.RegisterInstance<ICommandProcessor>(cmd);
 
-            /*container.RegisterFactory(_ => new BuildingsService(
-                loadingMap.Entities,
-                gameSettings.entitiesSettings,
-                cmd)
-            ).AsSingle();*/
+            var charactersService = new CharactersService(gameState.Entities, gameSettings.EntitiesSettings, cmd);
+            container.RegisterFactory(_ => charactersService).AsSingle();
 
             //container.RegisterFactory(_ => new ResourcesService(gameState.Resources, cmd)).AsSingle();
         }
