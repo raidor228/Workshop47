@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 using R3;
+using Workshop47.Scripts.Game.State.Entities;
+using Workshop47.Scripts.Game.State.GameResources;
 using Workshop47.Scripts.Game.State.Root;
+using Workshop47.Scripts.Utils.Converters;
 
 namespace Workshop47.Scripts.Game.State
 {
@@ -23,7 +27,11 @@ namespace Workshop47.Scripts.Game.State
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings()
             {
                 TypeNameHandling = TypeNameHandling.Auto,
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                Converters =
+                {
+                    new Vector3Converter()
+                }
             };
         }
         
@@ -116,6 +124,8 @@ namespace Workshop47.Scripts.Game.State
         {
             _gameStateOrigin = new GameStateData
             {
+                Resources = new List<ResourceData>(),
+                Entities = new List<EntityData>()
             };
                 
             return new GameState(_gameStateOrigin);
