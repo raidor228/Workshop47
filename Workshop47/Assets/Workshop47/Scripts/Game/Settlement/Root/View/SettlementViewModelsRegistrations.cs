@@ -1,4 +1,5 @@
 ﻿using Workshop47.Scripts.DI;
+using Workshop47.Scripts.Game.Settlement.Services;
 using Workshop47.Scripts.Game.Settlement.View.UI;
 
 namespace Workshop47.Scripts.Game.Settlement.Root.View
@@ -9,7 +10,8 @@ namespace Workshop47.Scripts.Game.Settlement.Root.View
         {
             container.RegisterFactory(c => new SettlementUIManager(container)).AsSingle();
             container.RegisterFactory(c => new UISettlementRootViewModel()).AsSingle();
-            container.RegisterFactory(c => new WorldSettlementRootViewModel()).AsSingle();
+            container.RegisterFactory(c => new WorldSettlementRootViewModel(
+                c.Resolve<CharactersService>())).AsSingle();
         }
     }
 }
