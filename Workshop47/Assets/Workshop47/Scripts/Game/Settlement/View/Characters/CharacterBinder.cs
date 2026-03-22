@@ -2,7 +2,7 @@
 
 namespace Workshop47.Scripts.Game.Settlement.View.Characters
 {
-    public class BuildingBinder : MonoBehaviour
+    public class CharacterBinder : MonoBehaviour
     {
         public void Bind(CharacterViewModel viewModel)
         {
