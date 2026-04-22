@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Melador.PlayerInput;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Settings;
 using Workshop47.Scripts.Game.State;
@@ -21,13 +22,13 @@ namespace Workshop47.Scripts.Game.Settlement.Root
             var gameState = gameStateProvider.GameState;
             var settingsProvider = container.Resolve<ISettingsProvider>();
             var gameSettings = settingsProvider.GameSettings;
+            var playerInputProvider = container.Resolve<PlayerInputProvider>();
             
             container.RegisterInstance(AppConstants.EXIT_SCENE_REQUEST_TAG, new Subject<Unit>());
 
             var cmd = new CommandProcessor(gameStateProvider);
             cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState));
             cmd.RegisterHandler(new CmdCreateMapHandler(gameState, gameSettings));
-            cmd.RegisterHandler(new CmdControlCharacterHandler(gameState));
             cmd.RegisterHandler(new CmdMoveEntityHandler(gameState));
             container.RegisterInstance<ICommandProcessor>(cmd);
 
@@ -48,6 +49,11 @@ namespace Workshop47.Scripts.Game.Settlement.Root
             var charactersService = new CharactersService(loadingMap.Entities, gameSettings.EntitiesSettings, cmd);
             container.RegisterFactory(_ => charactersService).AsSingle();
 
+            var playerService = new PlayerService(gameState.Player, gameSettings.EntitiesSettings.Player, 
+                playerInputProvider, cmd);
+            container.RegisterFactory(_ => playerService).AsSingle();
+            playerService.EnablePlayerInput(true);
+            
             //container.RegisterFactory(_ => new ResourcesService(gameState.Resources, cmd)).AsSingle();
         }
     }

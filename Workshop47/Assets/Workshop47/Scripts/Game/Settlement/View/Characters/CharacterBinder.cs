@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using Workshop47.Scripts.Game.Settlement.Player;
 
 namespace Workshop47.Scripts.Game.Settlement.View.Characters
 {
-    public class CharacterBinder : MonoBehaviour, IControllable
+    public class CharacterBinder : MonoBehaviour
     {
         [SerializeField] private CharacterController _characterController;
 

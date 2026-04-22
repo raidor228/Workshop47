@@ -25,9 +25,6 @@ namespace Workshop47.Scripts.Game.Settlement.Root
             InitWorld(settlementViewModelsContainer);
             InitUI(settlementViewModelsContainer);
 
-            var charactersService = settlementContainer.Resolve<CharactersService>();
-            charactersService.ControlCharacter(0);
-            
             var mainMenuEnterParams = new MainMenuEnterParams();
             var exitParams = new SettlementExitParams(mainMenuEnterParams);
             var exitSceneRequest = settlementContainer.Resolve<Subject<Unit>>(AppConstants.EXIT_SCENE_REQUEST_TAG);

@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using Melador.PlayerController.CameraController.Settings;
+using Melador.PlayerController.MovementController.Settings;
+using Melador.PlayerInput;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Workshop47.Scripts.Game.MainMenu.Root;
@@ -42,6 +45,11 @@ namespace Workshop47.Scripts.Game.Root
             var gameStateProvider = new JsonGameStateProvider();
             gameStateProvider.LoadSettingsState();
             _rootContainer.RegisterInstance<IGameStateProvider>(gameStateProvider);
+
+            var playerSettings = Resources.Load<PlayerSettings>("Settings/Player/PlayerSettings");
+            var cameraSettings = Resources.Load<CameraSettings>("Settings/Player/CameraSettings");
+            var playerInputProvider = new PlayerInputProvider(playerSettings, cameraSettings);
+            _rootContainer.RegisterInstance(playerInputProvider);
         }
 
         private async void RunGame()

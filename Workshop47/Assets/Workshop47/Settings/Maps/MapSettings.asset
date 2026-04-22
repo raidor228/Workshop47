@@ -14,9 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Settlement.Maps.MapSettings
   MapId: 0
   InitialStateSettings:
-    Entities:
-    - <EntityType>k__BackingField: 1
-      <ConfigId>k__BackingField: bob
-      <Level>k__BackingField: 1
-      <InitialPosition>k__BackingField: {x: 0, y: 2, z: 0}
-      <InitialRotation>k__BackingField: {x: 0, y: 0, z: 0}
+    Entities: []
