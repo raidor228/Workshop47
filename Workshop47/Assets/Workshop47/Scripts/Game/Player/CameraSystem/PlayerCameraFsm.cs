@@ -4,7 +4,7 @@ using PlayerController.CameraController.States;
 using PlayerController.CameraController.States.Root;
 using Unity.Cinemachine;
 using UnityEngine;
-using Workshop47.Scripts.Game.Fsm;
+using Workshop47.Scripts.Fsm;
 
 namespace PlayerController.CameraController
 {

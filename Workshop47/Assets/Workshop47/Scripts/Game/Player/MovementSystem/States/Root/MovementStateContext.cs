@@ -4,7 +4,7 @@ using Melador.PlayerController.MovementController.Settings;
 using Melador.PlayerController.MovementController.States.Handlers;
 using Melador.PlayerInput.Modules;
 using UnityEngine;
-using Workshop47.Scripts.Game.Fsm;
+using Workshop47.Scripts.Fsm;
 
 namespace Melador.PlayerController.MovementController.States.Root
 {

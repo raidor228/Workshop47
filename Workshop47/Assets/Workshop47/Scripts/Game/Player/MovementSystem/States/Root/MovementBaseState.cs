@@ -1,5 +1,5 @@
 using UnityEngine;
-using Workshop47.Scripts.Game.Fsm;
+using Workshop47.Scripts.Fsm;
 
 namespace Melador.PlayerController.MovementController.States.Root
 {

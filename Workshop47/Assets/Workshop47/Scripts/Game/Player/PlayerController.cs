@@ -26,8 +26,8 @@ namespace Workshop47.Scripts.Game.Player
         public CameraSettings CameraSettings => _cameraSettings;
         public PlayerInputProvider PlayerInputProvider => _playerInputProvider;
         
-        public Fsm.Fsm MovementFsm => _movementFsm;
-        public Fsm.Fsm CameraFsm => _cameraFsm;
+        public Scripts.Fsm.Fsm MovementFsm => _movementFsm;
+        public Scripts.Fsm.Fsm CameraFsm => _cameraFsm;
         
         private PlayerInputProvider _playerInputProvider;
         

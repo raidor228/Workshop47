@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Workshop47.Scripts.Game.Fsm
+namespace Workshop47.Scripts.Fsm
 {
     public abstract class FsmState
     {
-        protected readonly Fsm Fsm;
+        protected readonly Scripts.Fsm.Fsm Fsm;
 
-        public FsmState(Fsm fsm)
+        public FsmState(Scripts.Fsm.Fsm fsm)
         {
             Fsm = fsm;
         }

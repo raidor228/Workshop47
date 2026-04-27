@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Workshop47.Scripts.Game.Fsm
+namespace Workshop47.Scripts.Fsm
 {
     public class Fsm
     {

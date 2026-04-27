@@ -1,6 +1,6 @@
 using Melador.PlayerController.MovementController.States;
 using Melador.PlayerController.MovementController.States.Root;
-using Workshop47.Scripts.Game.Fsm;
+using Workshop47.Scripts.Fsm;
 
 namespace Melador.PlayerController.MovementController
 {
