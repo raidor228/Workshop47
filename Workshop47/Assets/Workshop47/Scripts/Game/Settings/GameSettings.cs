@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Workshop47.Scripts.Game.Settings.Settlement.Blocks;
 using Workshop47.Scripts.Game.Settings.Settlement.Entities;
 using Workshop47.Scripts.Game.Settings.Settlement.Maps;
 
@@ -9,5 +10,6 @@ namespace Workshop47.Scripts.Game.Settings
     {
         public EntitiesSettings EntitiesSettings;
         public MapsSettings MapsSettings;
+        public BlocksSettings BlocksSettings;
     }
 }

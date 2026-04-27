@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb98bda651ac472ea701c4a1dd0b265a, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.World.BlockSidesSettings
+  <BlockType>k__BackingField: 1
+  <PixelsOffsets>k__BackingField: {x: 0, y: 0}
+  <PixelOffsetUp>k__BackingField: {x: 0, y: 0}
+  <PixelOffsetDown>k__BackingField: {x: 0, y: 0}

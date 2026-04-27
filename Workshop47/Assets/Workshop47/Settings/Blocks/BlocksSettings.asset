@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a5232917154b339f122b33d653cc3a, type: 3}
+  m_Name: BlocksSettings
+  m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.World.BlocksSettings
+  <Blocks>k__BackingField:
+  - {fileID: 11400000, guid: 4a0b7ea60dbba384c98497954a9b38e0, type: 2}
+  - {fileID: 11400000, guid: 3150d2916b4e9c244b571009b9c7ff2c, type: 2}
+  - {fileID: 11400000, guid: c2a4f6ed9c8127744a7ba4b54baeba1d, type: 2}

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.GameSettings
   EntitiesSettings: {fileID: 11400000, guid: 35f46b03bf1450745aa057efd2724312, type: 2}
   MapsSettings: {fileID: 11400000, guid: 815b85b4140bc49448258d8ea53745e9, type: 2}
+  BlocksSettings: {fileID: 11400000, guid: c420a674bc199de4e96b3ca6a56a4b32, type: 2}

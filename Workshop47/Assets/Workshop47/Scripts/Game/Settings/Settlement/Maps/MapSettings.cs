@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Workshop47.Scripts.Game.Settings.Settlement.Worlds;
 
 namespace Workshop47.Scripts.Game.Settings.Settlement.Maps
 {
@@ -6,6 +7,7 @@ namespace Workshop47.Scripts.Game.Settings.Settlement.Maps
     public class MapSettings : ScriptableObject
     {
         public int MapId;
+        public GameWorldSettings GameWorldSettings;
         public MapInitialStateSettings InitialStateSettings;
     }
 }
