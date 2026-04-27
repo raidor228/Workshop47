@@ -9,11 +9,16 @@ namespace Workshop47.Scripts.Game.Settlement.Root.View
     {
         public static void Register(DIContainer container)
         {
+            var playerInputActions = new PlayerInputActions();
+            playerInputActions.Enable();
+            var charactersService = container.Resolve<CharactersService>();
+            var gameWorldService = container.Resolve<GameWorldService>();
+            
             container.RegisterFactory(c => new SettlementUIManager(container)).AsSingle();
             container.RegisterFactory(c => new UISettlementRootViewModel()).AsSingle();
-            var charactersService = container.Resolve<CharactersService>();
             container.RegisterFactory(c => new WorldSettlementRootViewModel(
-                new PlayerInputActions(), charactersService, charactersService.ControllableCharacter)).AsSingle();
+                playerInputActions, charactersService, gameWorldService,
+                charactersService.ControllableCharacter)).AsSingle();
         }
     }
 }

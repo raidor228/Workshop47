@@ -47,7 +47,11 @@ namespace Workshop47.Scripts.Game.Settlement.Root
             
             var charactersService = new CharactersService(loadingMap.Entities, gameSettings.EntitiesSettings, cmd);
             container.RegisterFactory(_ => charactersService).AsSingle();
-
+            
+            var loadingMapSettings = gameSettings.MapsSettings.Maps.First(m => m.MapId == loadingMapId);
+            var gameWorldService = new GameWorldService(loadingMapSettings.GameWorldSettings, gameSettings.BlocksSettings, cmd);
+            container.RegisterFactory(_ => gameWorldService).AsSingle();
+            
             //container.RegisterFactory(_ => new ResourcesService(gameState.Resources, cmd)).AsSingle();
         }
     }
