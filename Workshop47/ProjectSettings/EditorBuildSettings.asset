@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:acddb920c67db63627faee17cb2b60414c91c308bcf6272ff07f652a96feb6b0
-size 1510
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Workshop47/Scenes/Boot.unity
+    guid: 583ce5b5117d0da40b99ab8f2315ddab
+  - enabled: 1
+    path: Assets/Workshop47/Scenes/MainMenu.unity
+    guid: b5d101c3234f3a441847dea5c9a10fbd
+  - enabled: 1
+    path: Assets/Workshop47/Scenes/Gameplay.unity
+    guid: ae63865256321674193da507e5ffc580
+  - enabled: 0
+    path: Assets/URP Example/Scenes/Terminal/TerminalScene.unity
+    guid: 4496a3dbb8d263043a4460bac5382ac5
+  - enabled: 0
+    path: Assets/URP Example/Scenes/Oasis/OasisScene.unity
+    guid: 9fa2ba603a3424f9bafa4119f837f2bc
+  - enabled: 0
+    path: Assets/URP Example/Scenes/Garden/GardenScene.unity
+    guid: 81e71078978223e4c8ffbf973484c9c5
+  - enabled: 0
+    path: Assets/URP Example/Scenes/Cockpit/CockpitScene.unity
+    guid: b78a0ca5d851e4ddf993dcc6feab56d0
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 290a6e6411d135049940bec2237b8938, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 60576623fb27a497f94096ae6ee59ff5, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4c1640683c539c14080cfd43fbeffbda, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 9e9f2958d1b4b4642ace1d0c7770650b, type: 2}
+  m_UseUCBPForAssetBundles: 0
