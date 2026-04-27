@@ -24,7 +24,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
             
             foreach (var buildingViewModel in viewModel.AllCharacters)
             {
-                CreateBuilding(buildingViewModel);
+                CreateCharacter(buildingViewModel);
             }
             
             foreach (var chunkViewModel in viewModel.AllChunks)
@@ -33,10 +33,10 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
             }
             
             _disposables.Add(viewModel.AllCharacters.ObserveAdd()
-                .Subscribe(e => CreateBuilding(e.Value)));
+                .Subscribe(e => CreateCharacter(e.Value)));
             
             _disposables.Add(viewModel.AllCharacters.ObserveRemove()
-                .Subscribe(e => DestroyBuilding(e.Value)));
+                .Subscribe(e => DestroyCharacter(e.Value)));
             
             _disposables.Add(viewModel.AllChunks.ObserveAdd()
                 .Subscribe(e => CreateChunk(e.Value)));
@@ -75,7 +75,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
             }
         }
         
-        private void CreateBuilding(CharacterViewModel characterViewModel)
+        private void CreateCharacter(CharacterViewModel characterViewModel)
         {
             var characterLevel = characterViewModel.Level.CurrentValue;
             var characterType = characterViewModel.ConfigId;
@@ -88,7 +88,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
             _createdCharactersMap[characterViewModel.EntityId] = createdCharacter;
         }
 
-        private void DestroyBuilding(CharacterViewModel characterViewModel)
+        private void DestroyCharacter(CharacterViewModel characterViewModel)
         {
             if (_createdCharactersMap.TryGetValue(characterViewModel.EntityId, out var characterBinder))
             {
