@@ -9,6 +9,7 @@ using Workshop47.Scripts.Utils;
 using R3;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Gameplay.Root;
+using Workshop47.Scripts.Game.Player.InteractionSystem.Settings;
 using Workshop47.Scripts.Game.Settings;
 using Workshop47.Scripts.Game.State;
 
@@ -48,7 +49,8 @@ namespace Workshop47.Scripts.Game.Root
 
             var playerSettings = Resources.Load<PlayerSettings>("Settings/Player/PlayerSettings");
             var cameraSettings = Resources.Load<CameraSettings>("Settings/Player/CameraSettings");
-            var playerInputProvider = new PlayerInputProvider(playerSettings, cameraSettings);
+            var interactionsSettings = Resources.Load<InteractionsSettings>("Settings/Player/InteractionsSettings");
+            var playerInputProvider = new PlayerInputProvider(playerSettings, cameraSettings, interactionsSettings);
             _rootContainer.RegisterInstance(playerInputProvider);
         }
 

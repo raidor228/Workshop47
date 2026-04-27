@@ -38,6 +38,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         {
             PlayerInputProvider.Enable(InputModuleType.Movement);
             PlayerInputProvider.Enable(InputModuleType.Camera);
+            PlayerInputProvider.Enable(InputModuleType.Interactions);
         }
         
         private void CreatePlayerViewModel(PlayerEntity playerEntity)

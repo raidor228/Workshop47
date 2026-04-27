@@ -4,22 +4,26 @@ using Melador.PlayerController.MovementController.Settings;
 using Melador.PlayerInput.Modules;
 using UnityEngine;
 using Workshop47.Input;
+using Workshop47.Scripts.Game.Player.InteractionSystem.Settings;
 
 namespace Melador.PlayerInput
 {
     public class PlayerInputProvider : IDisposable
     {
+        public readonly InteractionsInput InteractionsInput;
         public readonly PlayerMovementInput MovementInput;
         public readonly PlayerCameraInput CameraInput;
         
         private readonly PlayerInputActions _playerInputActions;
 
-        public PlayerInputProvider(PlayerSettings playerSettings, CameraSettings cameraSettings)
+        public PlayerInputProvider(PlayerSettings playerSettings, CameraSettings cameraSettings, 
+            InteractionsSettings interactionsSettings)
         {
             _playerInputActions = new PlayerInputActions();
 
             MovementInput = new PlayerMovementInput(_playerInputActions, playerSettings);
             CameraInput = new PlayerCameraInput(_playerInputActions, cameraSettings);
+            InteractionsInput = new InteractionsInput(_playerInputActions, interactionsSettings);
         }
 
         public void ShowCursor()
@@ -44,6 +48,10 @@ namespace Melador.PlayerInput
             {
                 CameraInput.Disable();
             }
+            if ((inputModules & InputModuleType.Interactions) != 0)
+            {
+                InteractionsInput.Disable();
+            }
         }
         
         public void Enable(InputModuleType inputModules)
@@ -55,6 +63,10 @@ namespace Melador.PlayerInput
             if ((inputModules & InputModuleType.Camera) != 0)
             {
                 CameraInput.Enable();
+            }
+            if ((inputModules & InputModuleType.Interactions) != 0)
+            {
+                InteractionsInput.Enable();
             }
         }
         

@@ -206,6 +206,7 @@ MonoBehaviour:
   _rootTransform: {fileID: 7688808535278897947}
   _playerSettings: {fileID: 11400000, guid: 2351fe12327532440bf8babefa9e76ab, type: 2}
   _cameraSettings: {fileID: 11400000, guid: 7874168bdc5192149a69eb25f0b3a3a8, type: 2}
+  _interactionsSettings: {fileID: 11400000, guid: 63aa67d084e23b94db9e0a7fac9e5ea3, type: 2}
 --- !u!1001 &4885690109234291515
 PrefabInstance:
   m_ObjectHideFlags: 0
