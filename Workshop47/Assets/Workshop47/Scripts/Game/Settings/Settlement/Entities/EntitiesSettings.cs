@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Workshop47.Scripts.Game.Settings.Settlement.Entities.Characters;
+using Workshop47.Scripts.Game.Settings.Settlement.Entities.Player;
 
 namespace Workshop47.Scripts.Game.Settings.Settlement.Entities
 {
@@ -8,5 +9,6 @@ namespace Workshop47.Scripts.Game.Settings.Settlement.Entities
     public class EntitiesSettings : ScriptableObject
     {
         [field: SerializeField] public List<CharacterSettings> Characters { get; private set; }
+        [field: SerializeField] public PlayerSettings Player { get; private set; }
     }
 }

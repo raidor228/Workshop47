@@ -25,7 +25,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sneak",
+                    "name": "Walk",
                     "type": "Button",
                     "id": "99296dcf-1641-4a7b-b9b0-cbfc5e2f0878",
                     "expectedControlType": "",
@@ -37,6 +37,42 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "2a2ad8cd-1a19-4223-92f4-004da71d4fe6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Button",
+                    "id": "492a2c12-9189-414c-9a1f-03c7971d6ca2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crawl",
+                    "type": "Button",
+                    "id": "3cab8bc8-01cf-4f0c-ac73-fab93df79ebf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "a3cbadfd-a428-45dd-995b-5ac8f1084887",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slide",
+                    "type": "Button",
+                    "id": "87228470-d08e-4e0d-a8af-4c52376bda71",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -123,12 +159,56 @@
                 },
                 {
                     "name": "",
+                    "id": "7c183375-818d-4177-a941-b0382c790b21",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3b76db0-2ec2-4cbc-a4cc-cbb2a8093000",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crawl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "065d6aca-5fb7-4818-90c0-b478a783eac3",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Tap(duration=0.15)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4f60ebf-9ea0-43c6-8309-abe0674b70cd",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a9663b81-30e2-4ef0-915e-ee71cd50a7e8",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sneak",
+                    "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -3,6 +3,7 @@
     public enum EntityType
     {
         Unknown = 0,
-        Character = 1
+        Character = 1,
+        Player = 2
     }
 }

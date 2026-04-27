@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129ab1b400e349b6b2afcfda1f3ad9df, type: 3}
+  m_Name: PlayerSettings
+  m_EditorClassIdentifier: 
+  <GeneralSettings>k__BackingField:
+    <RoofMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1920
+    <WallBounceLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1408
+    <MovementAction>k__BackingField: {fileID: 4297770849400370182, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <MovementXAnimationParameter>k__BackingField: MoveX
+    <MovementYAnimationParameter>k__BackingField: MoveY
+    <MovementZAnimationParameter>k__BackingField: MoveZ
+    <IdleAnimationTrigger>k__BackingField: IsIdling
+    <FallAnimationTrigger>k__BackingField: IsFalling
+    <Gravity>k__BackingField: -40
+    <Friction>k__BackingField: 7
+    <EnergyLossFactor>k__BackingField: 0.3
+    <MaxVelocity>k__BackingField: 20
+    <StandingHeight>k__BackingField: 2
+    <MaxAirVelocity>k__BackingField: 10
+    <MinVerticalVelocity>k__BackingField: -30
+    <AirAcceleration>k__BackingField: 3
+    <AirLossFactor>k__BackingField: 20
+    <FallFactor>k__BackingField: 2
+    <SlopeMaxAngle>k__BackingField: 45
+    <MovementLerpSpeed>k__BackingField: 20
+    <MovementAccelerationSpeed>k__BackingField: 40
+    <MovementDecelerationSpeed>k__BackingField: 40
+  <WalkSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <WalkAction>k__BackingField: {fileID: -752641191906433004, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <WalkAnimationTrigger>k__BackingField: IsWalking
+    <WalkAcceleration>k__BackingField: 20
+  <RunSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <RunAnimationTrigger>k__BackingField: IsRunning
+    <RunAcceleration>k__BackingField: 42
+  <SprintSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <SprintAction>k__BackingField: {fileID: -1178369206915055398, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <SprintAnimationTrigger>k__BackingField: IsSprinting
+    <SprintAcceleration>k__BackingField: 70
+  <SlideSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <SlidingLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1920
+    <SlideAction>k__BackingField: {fileID: -3324980011165111069, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <SlideAnimationTrigger>k__BackingField: IsSliding
+    <SlideVelocityThreshold>k__BackingField: 2
+    <SlideBoostForce>k__BackingField: 5
+    <BoostSpeedCap>k__BackingField: 20
+    <SlidingSideAcceleration>k__BackingField: 1
+    <SlidingSlowdownFactor>k__BackingField: 1.005
+    <SlideTime>k__BackingField: 1.2
+    <SlideBlendTime>k__BackingField: 0.15
+    <BoostCooldown>k__BackingField: 2
+    <FallFactor>k__BackingField: 14
+  <JumpSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <JumpAction>k__BackingField: {fileID: 3458420214972860686, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <JumpAnimationTrigger>k__BackingField: IsJumping
+    <AutoBhop>k__BackingField: 1
+    <MaxJumps>k__BackingField: 1
+    <JumpHeight>k__BackingField: 1.5
+    <JumpForce>k__BackingField: 1.1
+    <CoyoteTime>k__BackingField: 0.1
+  <LongJumpSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <LongJumpAnimationTrigger>k__BackingField: IsLongJumping
+    <MinVelocityToLongJump>k__BackingField: 9
+    <LongJumpHeight>k__BackingField: 1.8
+    <LongJumpForce>k__BackingField: 200
+    <LongJumpCooldown>k__BackingField: 1.2
+  <CrouchSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <CrouchAction>k__BackingField: {fileID: -8209692848098594723, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <CrouchAnimationTrigger>k__BackingField: IsCrouching
+    <CrouchingHeight>k__BackingField: 1
+    <CrouchingSpeed>k__BackingField: 6
+    <CrouchAcceleration>k__BackingField: 12
+  <CrawlSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <CrawlAction>k__BackingField: {fileID: -1030197318200718836, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <CrawlAnimationTrigger>k__BackingField: IsCrawling
+    <CrawlingHeight>k__BackingField: 0.5
+    <CrawlingSpeed>k__BackingField: 6
+    <CrawlAcceleration>k__BackingField: 8
+  <ClimbSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <ClimbAnimationTrigger>k__BackingField: IsClimbing
+    <ClimbUpSpeed>k__BackingField: 4
+  <LedgeSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <LedgeLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 512
+    <LedgeAnimationTrigger>k__BackingField: IsLedging
+    <LedgeJumpAnimationTrigger>k__BackingField: IsLedgeJumping
+    <LedgeJumpHeight>k__BackingField: 2.5
+    <LedgeSpeed>k__BackingField: 1.2
+    <SameLedgeCoolDown>k__BackingField: 0.5
+    <LedgeGrabYPositionMultiplier>k__BackingField: 1.2
+    <LedgeCastYDirection>k__BackingField: -0.5
+  <SwimSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <SwimAnimationTrigger>k__BackingField: IsSwimming
+    <SprintSwimAnimationTrigger>k__BackingField: IsSprintSwimming
+    <SwimSpeed>k__BackingField: 10
+    <SprintSwimSpeed>k__BackingField: 15
+    <SwimDownThreshold>k__BackingField: -0.6
+    <BuoyancyForce>k__BackingField: 8
+  <VaultSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <VaultLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 256
+    <VaultAnimationTrigger>k__BackingField: IsVaulting
+    <VaultDuration>k__BackingField: 0.8
+    <MinVelocityToLongVault>k__BackingField: 7
+    <VelocityRange>k__BackingField: {x: 5, y: 10}
+    <AngleRange>k__BackingField: {x: 60, y: 20}
+  <WallRunSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <WallLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1024
+    <WallRunAnimationTrigger>k__BackingField: IsWallRunning
+    <WallRunJumpAnimationTrigger>k__BackingField: IsWallRunJumping
+    <WallAcceleration>k__BackingField: 100
+    <WallKickWindow>k__BackingField: 0.2
+    <WallBounceSpeed>k__BackingField: 0.25
+    <WallJumpDistance>k__BackingField: 12
+    <WallDuration>k__BackingField: 1
+    <WallCooldown>k__BackingField: 0.1
+    <SameWallCooldown>k__BackingField: 0.5
+    <MinVerticalVelocity>k__BackingField: -3
+  <RollSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <RollAction>k__BackingField: {fileID: 1406356769331044067, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <RollAnimationTrigger>k__BackingField: IsRolling
+    <RollingHeight>k__BackingField: 1
+    <RollingSpeed>k__BackingField: 6
+    <RollingForce>k__BackingField: 6
+    <RollingDuration>k__BackingField: 0.7
+    <RollingCooldown>k__BackingField: 1

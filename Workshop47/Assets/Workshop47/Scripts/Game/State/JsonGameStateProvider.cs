@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using R3;
 using Workshop47.Scripts.Game.State.Entities;
+using Workshop47.Scripts.Game.State.Entities.Upgradeable.Player;
 using Workshop47.Scripts.Game.State.GameResources;
 using Workshop47.Scripts.Game.State.Maps;
 using Workshop47.Scripts.Game.State.Root;
@@ -127,6 +128,16 @@ namespace Workshop47.Scripts.Game.State
             {
                 Resources = new List<ResourceData>(),
                 Maps = new List<MapData>()
+            };
+            _gameStateOrigin.Player = new PlayerEntityData()
+            {
+                UniqueId = _gameStateOrigin.CreateEntityId(),
+                Type = EntityType.Player,
+                Name = "Player Name",
+                Health = 100,
+                Level = 1,
+                Position = new Vector3(0, 1, 0),
+                Rotation = Vector3.zero
             };
                 
             return new GameState(_gameStateOrigin);

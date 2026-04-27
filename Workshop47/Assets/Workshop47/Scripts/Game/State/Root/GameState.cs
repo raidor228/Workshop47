@@ -3,6 +3,7 @@ using ObservableCollections;
 using Workshop47.Scripts.Game.State.GameResources;
 using Workshop47.Scripts.Game.State.Maps;
 using R3;
+using Workshop47.Scripts.Game.State.Entities.Upgradeable.Player;
 
 namespace Workshop47.Scripts.Game.State.Root
 {
@@ -10,6 +11,7 @@ namespace Workshop47.Scripts.Game.State.Root
     {
         public readonly ReactiveProperty<int> CurrentMapId = new();
         public readonly ReactiveProperty<int> ControllableEntityId = new();
+        public readonly ReadOnlyReactiveProperty<PlayerEntity> Player;
         
         public ObservableList<Resource> Resources { get; } = new();
         public ObservableList<Map> Maps { get; } = new();
@@ -23,8 +25,10 @@ namespace Workshop47.Scripts.Game.State.Root
             InitMaps(gameStateData);
             InitResources(gameStateData);
             
-            CurrentMapId.Subscribe(newCurrentMapId => { gameStateData.CurrentMapId = newCurrentMapId; });
-            ControllableEntityId.Subscribe(newControllableEntityId => { gameStateData.ControllableEntityId = newControllableEntityId; });
+            CurrentMapId.Subscribe(newCurrentMapId => gameStateData.CurrentMapId = newCurrentMapId);
+            ControllableEntityId.Subscribe(newControllableEntityId => gameStateData.ControllableEntityId = newControllableEntityId);
+
+            Player = new ReactiveProperty<PlayerEntity>(new PlayerEntity(gameStateData.Player));
         }
 
         public int CreateEntityId()

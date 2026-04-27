@@ -17,9 +17,7 @@ namespace Workshop47.Scripts.Game.Settlement.Services
     public class CharactersService
     {
         public IObservableCollection<CharacterViewModel> AllCharacters => _allCharacters;
-        public ReadOnlyReactiveProperty<CharacterViewModel> ControllableCharacter => _controllableCharacter;
 
-        private readonly ReactiveProperty<CharacterViewModel> _controllableCharacter = new();
         private readonly ObservableList<CharacterViewModel> _allCharacters = new();
         private readonly Dictionary<int, CharacterViewModel> _charactersMap = new();
         private readonly Dictionary<string, CharacterSettings> _characterSettingsMap = new();
@@ -79,19 +77,6 @@ namespace Workshop47.Scripts.Game.Settlement.Services
             return result;
         }
 
-        public bool ControlCharacter(int characterEntityId)
-        {
-            var command = new CmdControlCharacter(characterEntityId);
-            var result = _cmd.Process(command);
-            if (result)
-            {
-                var character = _allCharacters.First(c => c.EntityId == characterEntityId);
-                _controllableCharacter.Value = character;
-            }
-            
-            return result;
-        }
-        
         public bool DeleteCharacter(int characterEntityId)
         {
             throw new NotImplementedException();

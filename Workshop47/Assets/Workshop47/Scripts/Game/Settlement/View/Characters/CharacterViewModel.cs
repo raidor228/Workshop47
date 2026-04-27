@@ -11,13 +11,15 @@ namespace Workshop47.Scripts.Game.Settlement.View.Characters
     {
         public readonly int EntityId;
         public readonly string ConfigId;
+        public readonly string Name;
 
         public float Speed => _characterSettings.Speed;
         
         public ReadOnlyReactiveProperty<Vector3> Position { get; }
         public ReadOnlyReactiveProperty<Vector3> Rotation { get; }
         public ReadOnlyReactiveProperty<int> Level { get; }
-
+        public ReadOnlyReactiveProperty<float> Health { get; }
+        
         public readonly Subject<Vector3> Moved = new();
         
         private readonly CharacterEntity _characterEntity;
@@ -28,10 +30,15 @@ namespace Workshop47.Scripts.Game.Settlement.View.Characters
         public CharacterViewModel(CharacterEntity characterEntity, 
             CharacterSettings characterSettings, CharactersService charactersService)
         {
-            ConfigId = characterEntity.ConfigId;
             EntityId = characterEntity.UniqueId;
+            ConfigId = characterEntity.ConfigId;
+            Name = characterEntity.Name;
+            
             Level = characterEntity.Level;
-        
+            Position = characterEntity.Position;
+            Rotation = characterEntity.Rotation;
+            Health = characterEntity.Health;
+            
             _characterEntity = characterEntity;
             _characterSettings = characterSettings;
             _charactersService = charactersService;
@@ -40,10 +47,7 @@ namespace Workshop47.Scripts.Game.Settlement.View.Characters
             {
                 _levelSettingsMap[buildingLevelSettings.Level] = buildingLevelSettings;
             }
-        
-            Position = characterEntity.Position;
-            Rotation = characterEntity.Rotation;
-
+            
             Moved.Subscribe(OnMoved);
         }
 
@@ -54,7 +58,7 @@ namespace Workshop47.Scripts.Game.Settlement.View.Characters
 
         private void OnMoved(Vector3 newPosition)
         {
-            _charactersService.MoveCharacter(EntityId, newPosition);
+            //_charactersService.MoveCharacter(EntityId, newPosition);
         }
     }
 }

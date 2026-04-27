@@ -15,9 +15,4 @@ MonoBehaviour:
   MapId: 0
   GamaWorld: {fileID: 11400000, guid: 4e9f00f2b92bdab4bbb40a5c0bdaaa9e, type: 2}
   InitialStateSettings:
-    Entities:
-    - <EntityType>k__BackingField: 1
-      <ConfigId>k__BackingField: bob
-      <Level>k__BackingField: 1
-      <InitialPosition>k__BackingField: {x: 0, y: 2, z: 0}
-      <InitialRotation>k__BackingField: {x: 0, y: 0, z: 0}
+    Entities: []
