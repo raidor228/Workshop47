@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ObservableCollections;
 using UnityEngine;
 using Workshop47.Scripts.Game.Settlement.View.Characters;
-using R3;
+using Workshop47.Scripts.Game.Player;
 using Workshop47.Scripts.Game.Settlement.View.Chunks;
+using Workshop47.Scripts.Game.Settlement.View.Player;
+using R3;
 
 namespace Workshop47.Scripts.Game.Settlement.Root.View
 {
@@ -12,7 +13,7 @@ namespace Workshop47.Scripts.Game.Settlement.Root.View
     {
         private readonly Dictionary<int, CharacterBinder> _createdCharactersMap = new();
         private readonly Dictionary<Vector2Int, ChunkBinder> _createdChunksMap = new();
-        private Player.Player _player;
+        private PlayerBinder _createdPlayer;
         
         private readonly CompositeDisposable _disposables = new();
 
@@ -21,7 +22,6 @@ namespace Workshop47.Scripts.Game.Settlement.Root.View
         public void Bind(WorldSettlementRootViewModel viewModel)
         {
             _viewModel = viewModel;
-            _player = new Player.Player(viewModel.PlayerInputActions);
             
             foreach (var buildingViewModel in viewModel.AllCharacters)
             {
@@ -45,7 +45,15 @@ namespace Workshop47.Scripts.Game.Settlement.Root.View
             _disposables.Add(viewModel.AllChunks.ObserveRemove()
                 .Subscribe(e => DestroyChunk(e.Value)));
             
-            _disposables.Add(viewModel.ControllableCharacter.Skip(1).Subscribe(ControlCharacter));
+            _disposables.Add(viewModel.Player.Subscribe(newPlayerViewModel =>
+            {
+                if (_createdPlayer != null)
+                {
+                    DestroyPlayer();
+                }
+
+                CreatePlayer(newPlayerViewModel);
+            }));
         }
 
         private void CreateChunk(ChunkViewModel chunkViewModel)
@@ -90,21 +98,27 @@ namespace Workshop47.Scripts.Game.Settlement.Root.View
             }
         }
 
-        private void ControlCharacter(CharacterViewModel characterViewModel)
+        private void CreatePlayer(PlayerViewModel playerViewModel)
         {
-            var binder = _createdCharactersMap[characterViewModel.EntityId];
-            _player.SetCharacter(binder);
+            var playerLevel = playerViewModel.Level.CurrentValue;
+            var prefabPlayerLevelPath = $"Prefabs/Settlement/Player/Player_{playerLevel}";
+            var playerBinder = Resources.Load<PlayerBinder>(prefabPlayerLevelPath);
+            var createdPlayer = Instantiate(playerBinder);
+            
+            createdPlayer.Bind(playerViewModel);
+
+            _createdPlayer = createdPlayer;
         }
 
-        private void Update()
+        private void DestroyPlayer()
         {
-            _player?.Update();
+            Destroy(_createdPlayer);
+            _createdPlayer = null;
         }
 
         private void OnDestroy()
         {
             _disposables.Dispose();
-            _player.Dispose();
         }
     }
 }
