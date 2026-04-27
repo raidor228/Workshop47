@@ -25,6 +25,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             var playerInputProvider = container.Resolve<PlayerInputProvider>();
             
             container.RegisterInstance(AppConstants.EXIT_SCENE_REQUEST_TAG, new Subject<Unit>());
+            container.RegisterInstance(AppConstants.OPEN_SHOP_REQUEST_TAG, new Subject<Unit>());
 
             var cmd = new CommandProcessor(gameStateProvider);
             cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState));
@@ -46,7 +47,8 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
                 loadingMap = gameState.Maps.First(m => m.Id == loadingMapId);
             }
             
-            var charactersService = new CharactersService(loadingMap.Entities, gameSettings.EntitiesSettings, cmd);
+            var charactersService = new CharactersService(loadingMap.Entities, gameSettings.EntitiesSettings, 
+                container.Resolve<Subject<Unit>>(AppConstants.OPEN_SHOP_REQUEST_TAG), cmd);
             container.RegisterFactory(_ => charactersService).AsSingle();
             
             var playerService = new PlayerService(gameState.Player, 

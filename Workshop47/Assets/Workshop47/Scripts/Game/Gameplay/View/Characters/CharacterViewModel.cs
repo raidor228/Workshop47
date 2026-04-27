@@ -25,10 +25,12 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Characters
         private readonly CharacterEntity _characterEntity;
         private readonly CharacterSettings _characterSettings;
         private readonly CharactersService _charactersService;
+        private readonly Subject<Unit> _openShopRequest;
         private readonly Dictionary<int, CharacterLevelSettings> _levelSettingsMap = new();
         
         public CharacterViewModel(CharacterEntity characterEntity, 
-            CharacterSettings characterSettings, CharactersService charactersService)
+            CharacterSettings characterSettings, Subject<Unit> openShopRequest,
+            CharactersService charactersService)
         {
             EntityId = characterEntity.UniqueId;
             ConfigId = characterEntity.ConfigId;
@@ -42,6 +44,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Characters
             _characterEntity = characterEntity;
             _characterSettings = characterSettings;
             _charactersService = charactersService;
+            _openShopRequest = openShopRequest;
             
             foreach (var buildingLevelSettings in characterSettings.Levels)
             {
@@ -51,6 +54,11 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Characters
             Moved.Subscribe(OnMoved);
         }
 
+        public void OnRequestInteract()
+        {
+            _openShopRequest.OnNext(Unit.Default);
+        }
+        
         public CharacterLevelSettings GetLevelSettings(int level)
         {
             return _levelSettingsMap[level];

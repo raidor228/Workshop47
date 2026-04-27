@@ -11,7 +11,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Player
         public void Bind(PlayerViewModel viewModel)
         {
             _viewModel = viewModel;
-            _playerController.Initialize(viewModel.PlayerInputProvider);
+            _playerController.Initialize(viewModel.PlayerInputProvider, viewModel.OnInteractablesOverlap);
             
             _playerController.transform.position = _viewModel.Position.CurrentValue;
             _playerController.transform.rotation = Quaternion.Euler(_viewModel.Rotation.CurrentValue);
