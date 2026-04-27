@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Workshop47.Scripts.Game.Settings.Settlement.Blocks;
-using Workshop47.Scripts.Game.Settings.Settlement.Entities;
-using Workshop47.Scripts.Game.Settings.Settlement.Maps;
+using Workshop47.Scripts.Game.Settings.Gameplay.Blocks;
+using Workshop47.Scripts.Game.Settings.Gameplay.Entities;
+using Workshop47.Scripts.Game.Settings.Gameplay.Maps;
 
 namespace Workshop47.Scripts.Game.Settings
 {

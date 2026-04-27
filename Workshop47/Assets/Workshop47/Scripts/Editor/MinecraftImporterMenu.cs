@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Workshop47.Scripts.Game.Settings.Settlement.Worlds;
+using Workshop47.Scripts.Game.Settings.Gameplay.Worlds;
 
 namespace Workshop47.Scripts.World.Editor
 {

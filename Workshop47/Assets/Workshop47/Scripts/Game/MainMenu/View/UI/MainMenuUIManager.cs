@@ -2,8 +2,7 @@
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Common;
 using Workshop47.Scripts.Game.MainMenu.View.UI.ScreenMainMenu;
-using Workshop47.Scripts.Game.Settlement.View.UI;
-using Workshop47.Scripts.Game.Settlement.View.UI.ScreenSettlement;
+using Workshop47.Scripts.Game.Gameplay.View.UI;
 using Workshop47.Scripts.MVVM.UI;
 
 namespace Workshop47.Scripts.Game.MainMenu.View.UI

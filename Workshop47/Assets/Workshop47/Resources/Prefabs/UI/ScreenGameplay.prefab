@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5098776423005854637}
   - component: {fileID: 460870098471531454}
   m_Layer: 5
-  m_Name: ButtonGoGameplay
+  m_Name: ButtonGoMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,9 +130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8626347139393138529}
-  - component: {fileID: 215900803162073903}
+  - component: {fileID: 2724303290442448109}
   m_Layer: 5
-  m_Name: ScreenMainMenu
+  m_Name: ScreenGameplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &215900803162073903
+--- !u!114 &2724303290442448109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +168,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5840243719601556783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2023bf6b489a4735b82c5502b8ea3e30, type: 3}
+  m_Script: {fileID: 11500000, guid: f62d5c32c79348bf8f4c797a883bc1ed, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.MainMenu.View.UI.ScreenMainMenu.ScreenMainMenuBinder
-  _btnGoToGameplay: {fileID: 460870098471531454}
+  m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settlement.View.UI.ScreenSettlement.ScreenSettlementBinder
+  _btnGoToMenu: {fileID: 460870098471531454}
 --- !u!1 &6895080999787926658
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GO TO GAMEPLAY
+  m_text: GO TO MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

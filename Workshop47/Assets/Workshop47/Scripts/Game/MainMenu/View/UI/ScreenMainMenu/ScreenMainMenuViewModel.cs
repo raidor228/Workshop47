@@ -1,5 +1,5 @@
 ﻿using R3;
-using Workshop47.Scripts.Game.Settlement.View.UI;
+using Workshop47.Scripts.Game.Gameplay.View.UI;
 using Workshop47.Scripts.MVVM.UI;
 
 namespace Workshop47.Scripts.Game.MainMenu.View.UI.ScreenMainMenu
@@ -17,7 +17,7 @@ namespace Workshop47.Scripts.Game.MainMenu.View.UI.ScreenMainMenu
             _exitSceneRequest = exitSceneRequest;
         }
 
-        public void RequestGoToSettlement()
+        public void RequestGoToGameplay()
         {
             _exitSceneRequest.OnNext(Unit.Default);
         }

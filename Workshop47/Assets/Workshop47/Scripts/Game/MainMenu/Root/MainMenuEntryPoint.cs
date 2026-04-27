@@ -2,10 +2,10 @@
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.MainMenu.Root.View;
 using Workshop47.Scripts.Game.Root;
-using Workshop47.Scripts.Game.Settlement.Root;
 using Workshop47.Scripts.Game.MainMenu.View.UI;
 using Workshop47.Scripts.Game.Common;
 using R3;
+using Workshop47.Scripts.Game.Gameplay.Root;
 
 namespace Workshop47.Scripts.Game.MainMenu.Root
 {
@@ -25,8 +25,8 @@ namespace Workshop47.Scripts.Game.MainMenu.Root
             InitWorld(mainMenuViewModelsContainer);
             InitUI(mainMenuViewModelsContainer);
             
-            var settlementEnterParams = new SettlementEnterParams(0);
-            var exitParams = new MainMenuExitParams(settlementEnterParams);
+            var gameplayEnterParams = new GameplayEnterParams(0);
+            var exitParams = new MainMenuExitParams(gameplayEnterParams);
             var exitSceneRequest = mainMenuContainer.Resolve<Subject<Unit>>(AppConstants.EXIT_SCENE_REQUEST_TAG);
             var exitToMainMenuSceneSignal = exitSceneRequest.Select(_ => exitParams);
 

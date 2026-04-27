@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using fNbt;
 using UnityEngine;
-using Workshop47.Scripts.Game.Settings.Settlement.Blocks;
-using Workshop47.Scripts.Game.Settlement.View.Chunks;
+using Workshop47.Scripts.Game.Settings.Gameplay.Blocks;
 using Workshop47.Scripts.Game.State.Chunks;
 
 namespace Workshop47.Scripts.World.Editor

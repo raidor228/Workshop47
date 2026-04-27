@@ -6,21 +6,21 @@ namespace Workshop47.Scripts.Game.MainMenu.View.UI.ScreenMainMenu
 {
     public class ScreenMainMenuBinder : WindowBinder<ScreenMainMenuViewModel>
     {
-        [SerializeField] private Button _btnGoToSettlement;
+        [SerializeField] private Button _btnGoToGameplay;
 
         private void OnEnable()
         {
-            _btnGoToSettlement.onClick.AddListener(OnGoToSettlementButtonClicked);
+            _btnGoToGameplay.onClick.AddListener(OnGoToGameplayButtonClicked);
         }
 
         private void OnDisable()
         {
-            _btnGoToSettlement.onClick.RemoveListener(OnGoToSettlementButtonClicked);
+            _btnGoToGameplay.onClick.RemoveListener(OnGoToGameplayButtonClicked);
         }
 
-        private void OnGoToSettlementButtonClicked()
+        private void OnGoToGameplayButtonClicked()
         {
-            ViewModel.RequestGoToSettlement();
+            ViewModel.RequestGoToGameplay();
         }
     }
 }
