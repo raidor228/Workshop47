@@ -46,9 +46,9 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Characters
             _charactersService = charactersService;
             _openShopRequest = openShopRequest;
             
-            foreach (var buildingLevelSettings in characterSettings.Levels)
+            foreach (var characterLevelSettings in characterSettings.Levels)
             {
-                _levelSettingsMap[buildingLevelSettings.Level] = buildingLevelSettings;
+                _levelSettingsMap[characterLevelSettings.Level] = characterLevelSettings;
             }
             
             Moved.Subscribe(OnMoved);
