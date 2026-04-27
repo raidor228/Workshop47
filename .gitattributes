@@ -2,4 +2,4 @@
 *.obj filter=lfs diff=lfs merge=lfs -text
 *.fbx filter=lfs diff=lfs merge=lfs -text
 *.dylib filter=lfs diff=lfs merge=lfs -text
-*.asset filter=lfs diff=lfs merge=lfs -text
+Workshop47/Assets/Workshop47/Settings/Worlds/*.asset filter=lfs diff=lfs merge=lfs -text

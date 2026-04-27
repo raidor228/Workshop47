@@ -1,3 +1,52 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7db2618cf4638135346b91f759ff81cadbc09c73e91b665ff6f42ddc6282790d
-size 539
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - MainLight
+  - CinemachineTarget
+  - Ladder
+  - Obstacle
+  - Water
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - Location
+  - Vault
+  - Ledge
+  - Wall
+  - Interactable
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  - Screen
+  - Lamps
