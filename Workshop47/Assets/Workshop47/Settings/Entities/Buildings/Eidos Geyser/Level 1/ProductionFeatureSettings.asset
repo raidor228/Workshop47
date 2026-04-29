@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings.Features.ProductionFeatureSettings
   <Id>k__BackingField: 0
   <Input>k__BackingField:
-    ResourceType: 0
-    Amount: 0
+    ResourceType: 1
+    Amount: 5
   <Output>k__BackingField:
-    ResourceType: 0
-    Amount: 0
-  <ProductionTime>k__BackingField: 0
+    ResourceType: 2
+    Amount: 10
+  <ProductionTime>k__BackingField: 3

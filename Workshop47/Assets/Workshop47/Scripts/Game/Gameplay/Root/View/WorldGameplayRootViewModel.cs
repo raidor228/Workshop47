@@ -1,9 +1,7 @@
 ﻿using ObservableCollections;
 using R3;
 using Workshop47.Scripts.Game.Gameplay.Services;
-using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.Gameplay.View.Buildings;
-using Workshop47.Scripts.Game.Gameplay.View.Buildings.Features;
 using Workshop47.Scripts.Game.Gameplay.View.Characters;
 using Workshop47.Scripts.Game.Gameplay.View.Chunks;
 using Workshop47.Scripts.Game.Gameplay.View.Player;

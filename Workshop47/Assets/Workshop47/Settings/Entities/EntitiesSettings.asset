@@ -15,5 +15,7 @@ MonoBehaviour:
   <Characters>k__BackingField:
   - {fileID: 11400000, guid: eacf615265b9cab4bbc4b77fc56de75d, type: 2}
   <Buildings>k__BackingField:
-  - {fileID: 11400000, guid: ae41c68f2d66bff4db8842dca4d88447, type: 2}
+  - {fileID: 11400000, guid: e96cfbab4d8ddb84f834787c9cb6c241, type: 2}
+  - {fileID: 11400000, guid: 92038b9380a504e429d6afa9fa895fff, type: 2}
+  - {fileID: 11400000, guid: cec43ea7e2a2eda4dbc4e9efa2d1713b, type: 2}
   <Player>k__BackingField: {fileID: 11400000, guid: 5c38bcaa9bbb98f48b45d8f775e23f67, type: 2}
