@@ -24,9 +24,9 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
         {
             _viewModel = viewModel;
             
-            foreach (var buildingViewModel in viewModel.AllCharacters)
+            foreach (var characterViewModel in viewModel.AllCharacters)
             {
-                CreateCharacter(buildingViewModel);
+                CreateCharacter(characterViewModel);
             }
             
             foreach (var buildingViewModel in viewModel.AllBuildings)
