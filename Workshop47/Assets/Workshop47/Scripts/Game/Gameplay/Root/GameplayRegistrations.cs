@@ -2,6 +2,7 @@
 using System.Linq;
 using Melador.PlayerInput;
 using R3;
+using UnityEngine;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Common;
 using Workshop47.Scripts.Game.Gameplay.Services;
@@ -69,7 +70,6 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             var buildingService = new BuildingsService(loadingMap.Entities, gameSettings.EntitiesSettings, 
                 resourcesService, cmd);
             container.RegisterFactory(_ => buildingService).AsSingle();
-
         }
     }
 }

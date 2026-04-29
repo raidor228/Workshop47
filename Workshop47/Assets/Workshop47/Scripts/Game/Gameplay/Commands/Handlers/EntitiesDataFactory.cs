@@ -90,13 +90,16 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
             buildingEntity.Features = new List<IFeatureData>();
             
             var buildingSettings = entitiesSettings.Buildings.First(b => b.ConfigId == buildingEntity.ConfigId);
-            var buildingLevelSettings = buildingSettings.Levels[0];
-            buildingEntity.Level = buildingLevelSettings.Level;
-            foreach (var settingsFeature in buildingLevelSettings.Features)
+            if (buildingSettings.Levels.Count > 0)
             {
-                var featureData = FeaturesFactory.CreateFeature(settingsFeature);
-                featureData.Id = settingsFeature.Id;
-                buildingEntity.Features.Add(featureData);
+                buildingEntity.Level = 1;
+                var buildingLevelSettings = buildingSettings.Levels[0];
+                foreach (var settingsFeature in buildingLevelSettings.Features)
+                {
+                    var featureData = FeaturesFactory.CreateFeature(settingsFeature);
+                    featureData.Id = settingsFeature.Id;
+                    buildingEntity.Features.Add(featureData);
+                }
             }
         }
     }

@@ -6,7 +6,6 @@ using UnityEngine;
 using Workshop47.Scripts.Game.Gameplay.Commands;
 using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.Gameplay.View.Buildings;
-using Workshop47.Scripts.Game.Gameplay.View.Buildings.Features;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings;
 using Workshop47.Scripts.Game.State.Commands;
@@ -62,6 +61,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
             });
             
             _featureSystems.Add(new ProductionSystem(resourcesService));
+            _featureSystems.Add(new BuffSystem());
         }
 
         public bool PlaceBuilding(string buildingConfigId, Vector3 position, Vector3 rotation)
@@ -72,14 +72,6 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
             return result;
         }
         
-        public bool MoveBuilding(int buildingEntityId, Vector3 newPosition)
-        {
-            var command = new CmdMoveEntity(buildingEntityId, newPosition);
-            var result = _cmd.Process(command);
-            
-            return result;
-        }
-
         public bool DeleteBuilding(int buildingEntityId)
         {
             throw new NotImplementedException();
