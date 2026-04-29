@@ -72,14 +72,6 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
             return result;
         }
         
-        public bool MoveBuilding(int buildingEntityId, Vector3 newPosition)
-        {
-            var command = new CmdMoveEntity(buildingEntityId, newPosition);
-            var result = _cmd.Process(command);
-            
-            return result;
-        }
-
         public bool DeleteBuilding(int buildingEntityId)
         {
             throw new NotImplementedException();
