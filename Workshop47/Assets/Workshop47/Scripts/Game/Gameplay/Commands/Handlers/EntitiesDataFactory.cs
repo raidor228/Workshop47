@@ -2,6 +2,7 @@
 using UnityEngine;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities;
 using Workshop47.Scripts.Game.State.Entities;
+using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Characters;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Player;
 
@@ -17,6 +18,8 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
                     return CreateEntity<CharacterEntityData>(initialSettings);
                 case EntityType.Player:
                     return CreateEntity<PlayerEntityData>(initialSettings);
+                case EntityType.Building:
+                    return CreateEntity<BuildingEntityData>(initialSettings);
                 default:
                     throw new Exception($"Not implemented entity creation: {initialSettings.EntityType}");
             }
@@ -50,6 +53,9 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
                 case CharacterEntityData characterEntityData:
                     UpdateCharacterEntity(characterEntityData);
                     break;
+                case BuildingEntityData buildingEntityData:
+                    UpdateBuildingEntity(buildingEntityData);
+                    break;
                 default:
                     throw new Exception($"Not implemented entity creation: {type}");
             }
@@ -63,6 +69,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
         }
         
         private static void UpdatePlayerEntity(PlayerEntityData playerEntity)
+        {
+            
+        }
+        
+        private static void UpdateBuildingEntity(BuildingEntityData buildingEntity)
         {
             
         }

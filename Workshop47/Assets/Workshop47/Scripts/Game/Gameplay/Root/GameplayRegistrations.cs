@@ -59,7 +59,10 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             var loadingMapSettings = gameSettings.MapsSettings.Maps.First(m => m.MapId == loadingMapId);
             var gameWorldService = new GameWorldService(loadingMapSettings.GameWorldSettings, gameSettings.BlocksSettings, cmd);
             container.RegisterFactory(_ => gameWorldService).AsSingle();
-            
+
+            var buildingService = new BuildingsService(loadingMap.Entities, gameSettings.EntitiesSettings, cmd);
+            container.RegisterFactory(_ => buildingService).AsSingle();
+
             //container.RegisterFactory(_ => new ResourcesService(gameState.Resources, cmd)).AsSingle();
         }
     }

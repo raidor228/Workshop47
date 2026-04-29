@@ -2,6 +2,7 @@
 using UnityEngine;
 using Workshop47.Scripts.Game.State.Commands;
 using Workshop47.Scripts.Game.State.Entities;
+using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Characters;
 using Workshop47.Scripts.Game.State.Root;
 
@@ -30,9 +31,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
             var entityPosition = command.Position;
             var entityRotation = command.Rotation;
             var entityId = _gameState.CreateEntityId();
-            var createdEntityData = entityType switch
+            EntityData createdEntityData = entityType switch
             {
                 EntityType.Character => EntitiesDataFactory.CreateEntity<CharacterEntityData>(
+                    entityType, entityConfigId,entityPosition, entityRotation),
+                EntityType.Building => EntitiesDataFactory.CreateEntity<BuildingEntityData>(
                     entityType, entityConfigId,entityPosition, entityRotation),
                 _ => throw new System.NotImplementedException(),
             };

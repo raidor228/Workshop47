@@ -2,6 +2,7 @@
 using ObservableCollections;
 using R3;
 using UnityEngine;
+using Workshop47.Scripts.Game.Gameplay.View.Buildings;
 using Workshop47.Scripts.Game.Gameplay.View.Characters;
 using Workshop47.Scripts.Game.Gameplay.View.Chunks;
 using Workshop47.Scripts.Game.Gameplay.View.Player;
@@ -11,6 +12,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
     public class WorldGameplayRootBinder : MonoBehaviour
     {
         private readonly Dictionary<int, CharacterBinder> _createdCharactersMap = new();
+        private readonly Dictionary<int, BuildingBinder> _createdBuildingsMap = new();
         private readonly Dictionary<Vector2Int, ChunkBinder> _createdChunksMap = new();
         private PlayerBinder _createdPlayer;
         
@@ -27,6 +29,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
                 CreateCharacter(buildingViewModel);
             }
             
+            foreach (var buildingViewModel in viewModel.AllBuildings)
+            {
+                CreateBuilding(buildingViewModel);
+            }
+            
             foreach (var chunkViewModel in viewModel.AllChunks)
             {
                 CreateChunk(chunkViewModel);
@@ -37,6 +44,12 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
             
             _disposables.Add(viewModel.AllCharacters.ObserveRemove()
                 .Subscribe(e => DestroyCharacter(e.Value)));
+            
+            _disposables.Add(viewModel.AllBuildings.ObserveAdd()
+                .Subscribe(e => CreateBuilding(e.Value)));
+            
+            _disposables.Add(viewModel.AllBuildings.ObserveRemove()
+                .Subscribe(e => DestroyBuilding(e.Value)));
             
             _disposables.Add(viewModel.AllChunks.ObserveAdd()
                 .Subscribe(e => CreateChunk(e.Value)));
@@ -97,6 +110,28 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
             }
         }
 
+        private void CreateBuilding(BuildingViewModel buildingViewModel)
+        {
+            var buildingLevel = buildingViewModel.Level.CurrentValue;
+            var buildingType = buildingViewModel.ConfigId;
+            var prefabBuildingLevelPath = $"Prefabs/Gameplay/Buildings/Building{buildingType}_{buildingLevel}";
+            var buildingBinder = Resources.Load<BuildingBinder>(prefabBuildingLevelPath);
+            var createdBuilding = Instantiate(buildingBinder);
+            
+            createdBuilding.Bind(buildingViewModel);
+
+            _createdBuildingsMap[buildingViewModel.EntityId] = createdBuilding;
+        }
+
+        private void DestroyBuilding(BuildingViewModel buildingViewModel)
+        {
+            if (_createdBuildingsMap.TryGetValue(buildingViewModel.EntityId, out var buildingBinder))
+            {
+                Destroy(buildingBinder.gameObject);
+                _createdBuildingsMap.Remove(buildingViewModel.EntityId);
+            }
+        }
+        
         private void CreatePlayer(PlayerViewModel playerViewModel)
         {
             var playerLevel = playerViewModel.Level.CurrentValue;

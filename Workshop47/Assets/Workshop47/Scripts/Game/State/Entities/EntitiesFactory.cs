@@ -1,4 +1,5 @@
 ﻿using System;
+using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Characters;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Player;
 
@@ -14,6 +15,8 @@ namespace Workshop47.Scripts.Game.State.Entities
                     return new CharacterEntity(entityData as CharacterEntityData);
                 case EntityType.Player:
                     return new PlayerEntity(entityData as PlayerEntityData);
+                case EntityType.Building:
+                    return new BuildingEntity(entityData as BuildingEntityData);
                 default:
                     throw new Exception("Unsupported entity type: " + entityData.Type);
             }

@@ -11,11 +11,12 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
             var charactersService = container.Resolve<CharactersService>();
             var gameWorldService = container.Resolve<GameWorldService>();
             var playerService = container.Resolve<PlayerService>();
+            var buildingService = container.Resolve<BuildingsService>();
             
             container.RegisterFactory(c => new GameplayUIManager(container)).AsSingle();
             container.RegisterFactory(c => new UIGameplayRootViewModel()).AsSingle();
             container.RegisterFactory(c => new WorldGameplayRootViewModel(
-                charactersService, gameWorldService, playerService)).AsSingle();
+                charactersService, gameWorldService, playerService, buildingService)).AsSingle();
         }
     }
 }

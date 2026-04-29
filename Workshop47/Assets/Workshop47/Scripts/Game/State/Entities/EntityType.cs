@@ -4,6 +4,7 @@
     {
         Unknown = 0,
         Character = 1,
-        Player = 2
+        Player = 2,
+        Building = 3
     }
 }
