@@ -114,7 +114,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
         {
             var buildingLevel = buildingViewModel.Level.CurrentValue;
             var buildingType = buildingViewModel.ConfigId;
-            var prefabBuildingLevelPath = $"Prefabs/Gameplay/Buildings/Building{buildingType}_{buildingLevel}";
+            var prefabBuildingLevelPath = $"Prefabs/Gameplay/Buildings/Building_{buildingType}_{buildingLevel}";
             var buildingBinder = Resources.Load<BuildingBinder>(prefabBuildingLevelPath);
             var createdBuilding = Instantiate(buildingBinder);
             

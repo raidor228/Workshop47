@@ -21,3 +21,8 @@ MonoBehaviour:
       <Level>k__BackingField: 1
       <InitialPosition>k__BackingField: {x: 0, y: 1, z: 2}
       <InitialRotation>k__BackingField: {x: 0, y: 0, z: 0}
+    - <EntityType>k__BackingField: 3
+      <ConfigId>k__BackingField: dummy
+      <Level>k__BackingField: 1
+      <InitialPosition>k__BackingField: {x: 0, y: 1, z: 4}
+      <InitialRotation>k__BackingField: {x: 0, y: 0, z: 0}
