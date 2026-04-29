@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 namespace Workshop47.Scripts.Game.Settings.Gameplay.Entities
 {
@@ -8,4 +8,4 @@ namespace Workshop47.Scripts.Game.Settings.Gameplay.Entities
         [field: SerializeField] public int Level { get; private set; }
         [field: SerializeField] public string PrefabSkinPath { get; private set; }
     }
-}
+}*/

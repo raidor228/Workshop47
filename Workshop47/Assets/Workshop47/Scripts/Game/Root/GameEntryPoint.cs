@@ -52,6 +52,8 @@ namespace Workshop47.Scripts.Game.Root
             var interactionsSettings = Resources.Load<InteractionsSettings>("Settings/Player/InteractionsSettings");
             var playerInputProvider = new PlayerInputProvider(playerSettings, cameraSettings, interactionsSettings);
             _rootContainer.RegisterInstance(playerInputProvider);
+
+            _coroutines.OnApplicationQuitAction += () => gameStateProvider.SaveGameState();
         }
 
         private async void RunGame()

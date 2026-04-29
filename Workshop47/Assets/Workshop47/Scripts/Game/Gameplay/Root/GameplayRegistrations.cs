@@ -9,6 +9,7 @@ using Workshop47.Scripts.Game.Settings;
 using Workshop47.Scripts.Game.Gameplay.Commands;
 using Workshop47.Scripts.Game.Gameplay.Commands.Handlers;
 using Workshop47.Scripts.Game.Gameplay.Root;
+using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.State;
 using Workshop47.Scripts.Game.State.Commands;
 
@@ -28,9 +29,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             container.RegisterInstance(AppConstants.OPEN_SHOP_REQUEST_TAG, new Subject<Unit>());
 
             var cmd = new CommandProcessor(gameStateProvider);
-            cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState));
+            cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState, gameSettings));
             cmd.RegisterHandler(new CmdCreateMapHandler(gameState, gameSettings));
             cmd.RegisterHandler(new CmdMoveEntityHandler(gameState));
+            cmd.RegisterHandler(new CmdResourcesAddHandler(gameState));
+            cmd.RegisterHandler(new CmdResourcesSpendHandler(gameState));
             container.RegisterInstance<ICommandProcessor>(cmd);
 
             var loadingMapId = gameplayEnterParams.MapId;
@@ -60,10 +63,13 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             var gameWorldService = new GameWorldService(loadingMapSettings.GameWorldSettings, gameSettings.BlocksSettings, cmd);
             container.RegisterFactory(_ => gameWorldService).AsSingle();
 
-            var buildingService = new BuildingsService(loadingMap.Entities, gameSettings.EntitiesSettings, cmd);
+            var resourcesService = new ResourcesService(gameState.Resources, cmd);
+            container.RegisterFactory(_ => resourcesService).AsSingle();
+            
+            var buildingService = new BuildingsService(loadingMap.Entities, gameSettings.EntitiesSettings, 
+                resourcesService, cmd);
             container.RegisterFactory(_ => buildingService).AsSingle();
 
-            //container.RegisterFactory(_ => new ResourcesService(gameState.Resources, cmd)).AsSingle();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using Workshop47.Scripts.Game.Settings;
 using Workshop47.Scripts.Game.State.Commands;
 using Workshop47.Scripts.Game.State.Entities;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings;
@@ -11,10 +12,12 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
     public class CmdPlaceEntityHandler : ICommandHandler<CmdPlaceEntity>
     {
         private readonly GameState _gameState;
+        private readonly GameSettings _gameSettings;
 
-        public CmdPlaceEntityHandler(GameState gameState)
+        public CmdPlaceEntityHandler(GameState gameState, GameSettings gameSettings)
         {
             _gameState = gameState;
+            _gameSettings = gameSettings;
         }
         
         public bool Handle(CmdPlaceEntity command)
@@ -25,7 +28,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
                 Debug.LogError($"Couldn't find MapState for id: {_gameState.CurrentMapId.CurrentValue}");
                 return false;
             }
-            
+
             var entityConfigId = command.EntityConfigId;
             var entityType = command.EntityType;
             var entityPosition = command.Position;
@@ -34,9 +37,9 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
             EntityData createdEntityData = entityType switch
             {
                 EntityType.Character => EntitiesDataFactory.CreateEntity<CharacterEntityData>(
-                    entityType, entityConfigId,entityPosition, entityRotation),
+                    entityType, entityConfigId,entityPosition, entityRotation, _gameSettings.EntitiesSettings),
                 EntityType.Building => EntitiesDataFactory.CreateEntity<BuildingEntityData>(
-                    entityType, entityConfigId,entityPosition, entityRotation),
+                    entityType, entityConfigId,entityPosition, entityRotation, _gameSettings.EntitiesSettings),
                 _ => throw new System.NotImplementedException(),
             };
 

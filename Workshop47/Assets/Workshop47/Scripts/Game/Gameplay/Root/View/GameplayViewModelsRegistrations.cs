@@ -1,5 +1,6 @@
 ﻿using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Gameplay.Services;
+using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.Gameplay.View.UI;
 
 namespace Workshop47.Scripts.Game.Gameplay.Root.View

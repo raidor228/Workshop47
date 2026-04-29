@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using ObservableCollections;
 using Workshop47.Scripts.Game.Gameplay.Services;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings;
 using UnityEngine;
 using R3;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings;
+using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings.Root;
 
 namespace Workshop47.Scripts.Game.Gameplay.View.Buildings
 {
@@ -15,6 +17,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Buildings
         public ReadOnlyReactiveProperty<Vector3> Position { get; }
         public ReadOnlyReactiveProperty<Vector3> Rotation { get; }
         public ReadOnlyReactiveProperty<int> Level { get; }
+        public IObservableCollection<IFeatureData> Features { get; }
         
         private readonly BuildingEntity _buildingEntity;
         private readonly BuildingSettings _buildingSettings;
@@ -30,6 +33,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Buildings
             Level = buildingEntity.Level;
             Position = buildingEntity.Position;
             Rotation = buildingEntity.Rotation;
+            Features = buildingEntity.Features;
             
             _buildingEntity = buildingEntity;
             _buildingSettings = buildingSettings;
@@ -40,7 +44,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Buildings
                 _levelSettingsMap[buildingLevelSettings.Level] = buildingLevelSettings;
             }
         }
-        
+
         public BuildingLevelSettings GetLevelSettings(int level)
         {
             return _levelSettingsMap[level];

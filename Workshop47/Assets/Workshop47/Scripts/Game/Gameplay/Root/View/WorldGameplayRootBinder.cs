@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ObservableCollections;
 using R3;
 using UnityEngine;
@@ -153,6 +154,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
         private void OnDestroy()
         {
             _disposables.Dispose();
+        }
+
+        private void Update()
+        {
+            _viewModel?.OnUpdate(Time.deltaTime);
         }
     }
 }

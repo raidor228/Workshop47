@@ -7,8 +7,9 @@ namespace Workshop47.Scripts.Utils
     public class Coroutines : MonoBehaviour
     {
         public static Coroutines Instance => _instance;
-
         private static Coroutines _instance;
+
+        public Action OnApplicationQuitAction;
         
         public static void Invoke(Action action, float delay)
         {
@@ -30,6 +31,11 @@ namespace Workshop47.Scripts.Utils
         private void Awake()
         {
             _instance = this;
+        }
+
+        private void OnApplicationQuit()
+        {
+            OnApplicationQuitAction?.Invoke();
         }
     }
 }

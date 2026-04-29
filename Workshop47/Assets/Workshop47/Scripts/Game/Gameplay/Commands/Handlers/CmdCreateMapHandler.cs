@@ -36,7 +36,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Commands.Handlers
             var initialEntities = new List<EntityData>();
             foreach (var entitySettings in newMapInitialStateSettings.Entities)
             {
-                var initialEntityData = EntitiesDataFactory.CreateEntity(entitySettings);
+                var initialEntityData = EntitiesDataFactory.CreateEntity(entitySettings, _gameSettings.EntitiesSettings);
                 initialEntityData.UniqueId = _gameState.CreateEntityId();
                 initialEntities.Add(initialEntityData);
             }

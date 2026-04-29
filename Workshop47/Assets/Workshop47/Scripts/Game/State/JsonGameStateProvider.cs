@@ -126,8 +126,25 @@ namespace Workshop47.Scripts.Game.State
         {
             _gameStateOrigin = new GameStateData
             {
-                Resources = new List<ResourceData>(),
-                Maps = new List<MapData>()
+                Resources = new List<ResourceData>()
+                {
+                    new ResourceData()
+                    {
+                        ResourceType = ResourceType.Eidos,
+                        Amount = 1000
+                    },
+                    new ResourceData()
+                    {
+                        ResourceType = ResourceType.Ether,
+                        Amount = 1000
+                    },
+                    new ResourceData()
+                    {
+                        ResourceType = ResourceType.Rice,
+                        Amount = 1000
+                    },
+                },
+                Maps = new List<MapData>(),
             };
             _gameStateOrigin.Player = new PlayerEntityData()
             {

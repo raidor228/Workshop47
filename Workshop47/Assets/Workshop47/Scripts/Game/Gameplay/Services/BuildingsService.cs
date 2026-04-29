@@ -4,7 +4,9 @@ using ObservableCollections;
 using R3;
 using UnityEngine;
 using Workshop47.Scripts.Game.Gameplay.Commands;
+using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.Gameplay.View.Buildings;
+using Workshop47.Scripts.Game.Gameplay.View.Buildings.Features;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings;
 using Workshop47.Scripts.Game.State.Commands;
@@ -20,10 +22,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         private readonly ObservableList<BuildingViewModel> _allBuildings = new();
         private readonly Dictionary<int, BuildingViewModel> _buildingsMap = new();
         private readonly Dictionary<string, BuildingSettings> _buildingSettingsMap = new();
+        private readonly List<IFeatureSystem> _featureSystems = new();
         private readonly ICommandProcessor _cmd;
-
+        
         public BuildingsService(IObservableCollection<Entity> entities, 
-            EntitiesSettings entitiesSettings, ICommandProcessor cmd)
+            EntitiesSettings entitiesSettings, ResourcesService resourcesService, ICommandProcessor cmd)
         {
             _cmd = cmd;
             
@@ -57,6 +60,8 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
                     RemoveBuildingViewModel(buildingEntity);
                 }
             });
+            
+            _featureSystems.Add(new ProductionSystem(resourcesService));
         }
 
         public bool PlaceBuilding(string buildingConfigId, Vector3 position, Vector3 rotation)
@@ -78,6 +83,24 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         public bool DeleteBuilding(int buildingEntityId)
         {
             throw new NotImplementedException();
+        }
+        
+        public void OnTick(float deltaTime)
+        {
+            foreach (var featureSystem in _featureSystems)
+            {
+                foreach (var buildingViewModel in _allBuildings)
+                {
+                    if (_buildingSettingsMap.TryGetValue(buildingViewModel.ConfigId, out var buildingSettings))
+                    {
+                        featureSystem.Tick(buildingViewModel, buildingSettings, deltaTime);
+                    }
+                    else
+                    {
+                        Debug.Log($"Could not find building settings with config id: {buildingViewModel.ConfigId}");
+                    }
+                }
+            }
         }
 
         private void CreateBuildingViewModel(BuildingEntity buildingEntity)
