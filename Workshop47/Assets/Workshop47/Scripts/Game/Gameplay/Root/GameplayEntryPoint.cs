@@ -1,4 +1,5 @@
-﻿using R3;
+﻿using System;
+using R3;
 using UnityEngine;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Common;
@@ -14,6 +15,8 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
     {
         [SerializeField] private UIGameplayRootBinder _sceneUIRootPrefab;
         [SerializeField] private WorldGameplayRootBinder _worldRootBinder;
+
+        private CompositeDisposable _disposable;
         
         public Observable<GameplayExitParams> Run(DIContainer gameplayContainer, GameplayEnterParams enterParams)
         {
@@ -45,9 +48,14 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             
             var uiSceneRootViewModel = viewsContainer.Resolve<UIGameplayRootViewModel>();
             uiSceneRootBinder.Bind(uiSceneRootViewModel);
-            
-            var uiManager = viewsContainer.Resolve<GameplayUIManager>();
-            uiManager.OpenScreenGameplay();
+
+            _disposable.Add(uiSceneRootViewModel);
+            _disposable.Add(viewsContainer.Resolve<GameplayUIManager>());
+        }
+
+        private void OnDestroy()
+        {
+            _disposable?.Dispose();
         }
     }
 }

@@ -2,15 +2,12 @@
 using System.Linq;
 using Melador.PlayerInput;
 using R3;
-using UnityEngine;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Common;
 using Workshop47.Scripts.Game.Gameplay.Services;
 using Workshop47.Scripts.Game.Settings;
 using Workshop47.Scripts.Game.Gameplay.Commands;
 using Workshop47.Scripts.Game.Gameplay.Commands.Handlers;
-using Workshop47.Scripts.Game.Gameplay.Root;
-using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.State;
 using Workshop47.Scripts.Game.State.Commands;
 
@@ -27,7 +24,6 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             var playerInputProvider = container.Resolve<PlayerInputProvider>();
             
             container.RegisterInstance(AppConstants.EXIT_SCENE_REQUEST_TAG, new Subject<Unit>());
-            container.RegisterInstance(AppConstants.OPEN_SHOP_REQUEST_TAG, new Subject<Unit>());
 
             var cmd = new CommandProcessor(gameStateProvider);
             cmd.RegisterHandler(new CmdPlaceEntityHandler(gameState, gameSettings));
@@ -51,8 +47,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
                 loadingMap = gameState.Maps.First(m => m.Id == loadingMapId);
             }
             
-            var charactersService = new CharactersService(loadingMap.Entities, gameSettings.EntitiesSettings, 
-                container.Resolve<Subject<Unit>>(AppConstants.OPEN_SHOP_REQUEST_TAG), cmd);
+            var charactersService = new CharactersService(loadingMap.Entities, gameSettings.EntitiesSettings, cmd);
             container.RegisterFactory(_ => charactersService).AsSingle();
             
             var playerService = new PlayerService(gameState.Player, 

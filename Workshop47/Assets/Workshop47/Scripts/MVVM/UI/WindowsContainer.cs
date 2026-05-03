@@ -36,9 +36,9 @@ namespace Workshop47.Scripts.MVVM.UI
             {
                 return;
             }
-            
-            _openedScreenBinder?.Close();
-            
+
+            CloseScreen();
+
             var prefabPath = GetPrefabPath(viewModel);
             var prefab = Resources.Load<GameObject>(prefabPath);
             var createdScreen = Instantiate(prefab, _screensContainer);
@@ -48,6 +48,16 @@ namespace Workshop47.Scripts.MVVM.UI
             _openedScreenBinder = binder;
         }
 
+        public void CloseScreen()
+        {
+            if (_openedScreenBinder is Object unityObj && unityObj == null)
+            {
+                return;
+            }
+
+            _openedScreenBinder?.Close();
+        }
+        
         private static string GetPrefabPath(WindowViewModel viewModel)
         {
             return $"Prefabs/UI/{viewModel.Id}";

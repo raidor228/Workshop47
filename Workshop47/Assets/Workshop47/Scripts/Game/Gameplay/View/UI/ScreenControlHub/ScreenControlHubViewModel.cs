@@ -16,7 +16,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.UI.ScreenControlHub
 
         public void OnRequestCloseWindow()
         {
-            _uiManager.OpenScreenGameplay();
+            RequestClose();
         }
 
         public void OnRequestEnterRtsMode()

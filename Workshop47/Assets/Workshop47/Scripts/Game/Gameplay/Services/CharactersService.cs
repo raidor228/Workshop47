@@ -20,13 +20,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         private readonly ObservableList<CharacterViewModel> _allCharacters = new();
         private readonly Dictionary<int, CharacterViewModel> _charactersMap = new();
         private readonly Dictionary<string, CharacterSettings> _characterSettingsMap = new();
-        private readonly Subject<Unit> _openShopRequest;
         private readonly ICommandProcessor _cmd;
 
         public CharactersService(IObservableCollection<Entity> entities, 
-            EntitiesSettings entitiesSettings, Subject<Unit> openShopRequest, ICommandProcessor cmd)
+            EntitiesSettings entitiesSettings, ICommandProcessor cmd)
         {
-            _openShopRequest = openShopRequest;
             _cmd = cmd;
             
             foreach (var characterSettings in entitiesSettings.Characters)
@@ -86,8 +84,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         private void CreateCharacterViewModel(CharacterEntity characterEntity)
         {
             var characterSettings = _characterSettingsMap[characterEntity.ConfigId];
-            var characterViewModel = new CharacterViewModel(characterEntity, characterSettings, 
-                _openShopRequest, this);
+            var characterViewModel = new CharacterViewModel(characterEntity, characterSettings, this);
             
             _allCharacters.Add(characterViewModel);
             _charactersMap[characterEntity.UniqueId] = characterViewModel;

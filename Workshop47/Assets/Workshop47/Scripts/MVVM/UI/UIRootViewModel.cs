@@ -15,7 +15,7 @@ namespace Workshop47.Scripts.MVVM.UI
         private readonly ObservableList<WindowViewModel> _openedPopups = new();
         private readonly Dictionary<WindowViewModel, IDisposable> _popupSubscriptions = new();
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             CloseAllPopups();
             _openedScreen.Value?.Dispose();
@@ -27,6 +27,11 @@ namespace Workshop47.Scripts.MVVM.UI
             _openedScreen.Value = screenViewModel;
         }
 
+        public void CloseScreen()
+        {
+            _openedScreen.Value = null;
+        }
+        
         public void OpenPopup(WindowViewModel popupViewModel)
         {
             if (_openedPopups.Contains(popupViewModel))

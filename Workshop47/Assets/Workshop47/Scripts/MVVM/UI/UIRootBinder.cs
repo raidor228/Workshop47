@@ -14,7 +14,14 @@ namespace Workshop47.Scripts.MVVM.UI
         {
             _subscriptions.Add(viewModel.OpenedScreen.Subscribe(newScreenViewModel =>
             {
-                _windowsContainer.OpenScreen(newScreenViewModel);
+                if (newScreenViewModel == null)
+                {
+                    _windowsContainer.CloseScreen();
+                }
+                else
+                {
+                    _windowsContainer.OpenScreen(newScreenViewModel);
+                }
             }));
 
             foreach (var openedPopup in viewModel.OpenedPopups)

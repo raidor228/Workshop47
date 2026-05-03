@@ -1,8 +1,9 @@
-﻿using Workshop47.Scripts.DI;
+﻿using System;
+using Workshop47.Scripts.DI;
 
 namespace Workshop47.Scripts.MVVM.UI
 {
-    public abstract class UIManager
+    public abstract class UIManager : IDisposable
     {
         protected readonly DIContainer Container;
 
@@ -10,5 +11,7 @@ namespace Workshop47.Scripts.MVVM.UI
         {
             Container = container;
         }
+
+        public virtual void Dispose() { }
     }
 }

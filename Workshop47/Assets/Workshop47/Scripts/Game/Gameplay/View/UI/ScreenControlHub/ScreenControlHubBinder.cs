@@ -24,6 +24,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.UI.ScreenControlHub
         private void OnCloseWindowButtonClicked()
         {
             ViewModel.OnRequestCloseWindow();
+            Close();
         }
         
         private void OnEnterRtsModeButtonClicked()

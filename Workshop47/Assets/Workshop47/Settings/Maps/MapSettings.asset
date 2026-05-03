@@ -28,3 +28,7 @@ MonoBehaviour:
       <ConfigId>k__BackingField: wall
       <InitialPosition>k__BackingField: {x: 0, y: 3, z: 2}
       <InitialRotation>k__BackingField: {x: 0, y: 0, z: 0}
+    - <EntityType>k__BackingField: 3
+      <ConfigId>k__BackingField: control_hub
+      <InitialPosition>k__BackingField: {x: 2, y: 1, z: 4}
+      <InitialRotation>k__BackingField: {x: 0, y: 45, z: 0}

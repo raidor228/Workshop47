@@ -2,6 +2,7 @@
 using R3;
 using UnityEngine;
 using Workshop47.Scripts.Game.Gameplay.Services;
+using Workshop47.Scripts.Game.Gameplay.Services.Events;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Characters;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Characters;
 
@@ -25,12 +26,10 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Characters
         private readonly CharacterEntity _characterEntity;
         private readonly CharacterSettings _characterSettings;
         private readonly CharactersService _charactersService;
-        private readonly Subject<Unit> _openShopRequest;
         private readonly Dictionary<int, CharacterLevelSettings> _levelSettingsMap = new();
         
         public CharacterViewModel(CharacterEntity characterEntity, 
-            CharacterSettings characterSettings, Subject<Unit> openShopRequest,
-            CharactersService charactersService)
+            CharacterSettings characterSettings, CharactersService charactersService)
         {
             EntityId = characterEntity.UniqueId;
             ConfigId = characterEntity.ConfigId;
@@ -44,7 +43,6 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Characters
             _characterEntity = characterEntity;
             _characterSettings = characterSettings;
             _charactersService = charactersService;
-            _openShopRequest = openShopRequest;
             
             foreach (var characterLevelSettings in characterSettings.Levels)
             {
@@ -56,7 +54,8 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Characters
 
         public void OnRequestInteract()
         {
-            _openShopRequest.OnNext(Unit.Default);
+            var interactionEvent = new InteractionEvent(Name, EntityId);
+            EventsHandler.Send(interactionEvent);
         }
         
         public CharacterLevelSettings GetLevelSettings(int level)
