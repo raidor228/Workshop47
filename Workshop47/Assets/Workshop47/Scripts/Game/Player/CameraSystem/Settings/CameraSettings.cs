@@ -16,5 +16,8 @@ namespace Melador.PlayerController.CameraController.Settings
         
         [field: SerializeField]
         public FreeLookSettings FreeLookSettings { get; private set; }
+        
+        [field: SerializeField]
+        public RTSSettings RTSSettings { get; private set; }
     }
 }

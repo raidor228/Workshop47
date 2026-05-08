@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using Melador.PlayerController.CameraController.Settings;
 using Melador.PlayerController.MovementController.Settings;
-using Melador.PlayerInput;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Workshop47.Scripts.Game.MainMenu.Root;
 using Workshop47.Scripts.Utils;
 using R3;
 using Workshop47.Scripts.DI;
+using Workshop47.Scripts.Game.Gameplay.Input;
 using Workshop47.Scripts.Game.Gameplay.Root;
 using Workshop47.Scripts.Game.Player.InteractionSystem.Settings;
 using Workshop47.Scripts.Game.Settings;
@@ -50,8 +50,10 @@ namespace Workshop47.Scripts.Game.Root
             var playerSettings = Resources.Load<PlayerSettings>("Settings/Player/PlayerSettings");
             var cameraSettings = Resources.Load<CameraSettings>("Settings/Player/CameraSettings");
             var interactionsSettings = Resources.Load<InteractionsSettings>("Settings/Player/InteractionsSettings");
-            var playerInputProvider = new PlayerInputProvider(playerSettings, cameraSettings, interactionsSettings);
-            _rootContainer.RegisterInstance(playerInputProvider);
+            var inputContextManager = new InputContextManager(playerSettings, cameraSettings, interactionsSettings);
+            var inputModesHandler = new InputModesHandler(inputContextManager);
+            _rootContainer.RegisterInstance(inputModesHandler);
+            _rootContainer.RegisterInstance(inputContextManager);
 
             _coroutines.OnApplicationQuitAction += () => gameStateProvider.SaveGameState();
         }

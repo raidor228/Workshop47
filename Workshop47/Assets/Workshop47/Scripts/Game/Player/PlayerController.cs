@@ -3,11 +3,11 @@ using Melador.PlayerController.CameraController.Settings;
 using Melador.PlayerController.MovementController;
 using Melador.PlayerController.MovementController.Settings;
 using Melador.PlayerController.Root;
-using Melador.PlayerInput;
 using PlayerController.CameraController;
 using R3;
 using Unity.Cinemachine;
 using UnityEngine;
+using Workshop47.Scripts.Game.Gameplay.Input;
 using Workshop47.Scripts.Game.Gameplay.View.Interactable;
 using Workshop47.Scripts.Game.Player.InteractionSystem;
 using Workshop47.Scripts.Game.Player.InteractionSystem.Settings;
@@ -20,6 +20,8 @@ namespace Workshop47.Scripts.Game.Player
         [SerializeField] private Animator _animator;
         [SerializeField] private CinemachineCamera _fpsCamera;
         [SerializeField] private CinemachineCamera _orbitalCamera;
+        [SerializeField] private CinemachineCamera _rtsCamera;
+        [SerializeField] private Transform _rtsCameraRig;
         [SerializeField] private Transform _rootTransform;
         [SerializeField] private PlayerSettings _playerSettings;
         [SerializeField] private CameraSettings _cameraSettings;
@@ -31,24 +33,25 @@ namespace Workshop47.Scripts.Game.Player
         public PlayerSettings PlayerSettings => _playerSettings;
         public CameraSettings CameraSettings => _cameraSettings;
         public InteractionsSettings InteractionsSettings => _interactionsSettings;
-        public PlayerInputProvider PlayerInputProvider => _playerInputProvider;
+        public InputContextManager InputContextManager => _inputContextManager;
         
         public Scripts.Fsm.Fsm MovementFsm => _movementFsm;
         public Scripts.Fsm.Fsm CameraFsm => _cameraFsm;
         
-        private PlayerInputProvider _playerInputProvider;
+        private InputContextManager _inputContextManager;
         
         private PlayerMovementFsm _movementFsm;
         private PlayerCameraFsm _cameraFsm;
         private InteractionsHandler _interactionsHandler;
         
-        public void Initialize(PlayerInputProvider inputProvider, 
-            Subject<List<IInteractable>> onInteractablesOverlap)
+        public void Initialize(InputContextManager inputContextManager, 
+            Subject<List<IInteractable>> onInteractablesOverlap, Subject<Unit> onSwitchRtsMode)
         {
-            _playerInputProvider = inputProvider;
+            _inputContextManager = inputContextManager;
 
-            _cameraFsm = new PlayerCameraFsm(transform, _playerInputProvider.CameraInput, 
-                _cameraSettings, _fpsCamera, _orbitalCamera);
+            _cameraFsm = new PlayerCameraFsm(transform, _inputContextManager.CameraInput, 
+                _inputContextManager.RtsCameraInput, _cameraSettings, _fpsCamera, 
+                _orbitalCamera, _rtsCamera, _rtsCameraRig, onSwitchRtsMode);
             
             _movementFsm = new PlayerMovementFsm(this);
 

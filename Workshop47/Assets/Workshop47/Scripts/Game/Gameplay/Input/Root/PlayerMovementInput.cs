@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using Workshop47.Input;
 using PlayerSettings = Melador.PlayerController.MovementController.Settings.PlayerSettings;
 
-namespace Melador.PlayerInput.Modules
+namespace Workshop47.Scripts.Game.Gameplay.Input
 {
     public class PlayerMovementInput
     {

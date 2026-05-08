@@ -33,6 +33,7 @@ Transform:
   - {fileID: 6849858288458893969}
   - {fileID: 4267051625123211933}
   - {fileID: 1504020396182224857}
+  - {fileID: 7267962720907064602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &641003687600204601
@@ -129,6 +130,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2308051954013480388
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 338052091049742049}
+    m_Modifications:
+    - target: {fileID: 3408206082623378720, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: Priority.m_Value
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2588191
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449183126825910168, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+      propertyPath: m_Name
+      value: RtsCameraRig
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+--- !u!114 &1102177230073180388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3408206082623378720, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+  m_PrefabInstance: {fileID: 2308051954013480388}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+--- !u!4 &7267962720907064602 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4961599616822595806, guid: fd65c0c8fdb89db4f9ea835f8a4327cb, type: 3}
+  m_PrefabInstance: {fileID: 2308051954013480388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7875543698735604663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,6 +296,14 @@ PrefabInstance:
       propertyPath: _fpsCamera
       value: 
       objectReference: {fileID: 3358505324849014040}
+    - target: {fileID: 974630090486601915, guid: 72733c1aca936c346b5cd4b47e8867ee, type: 3}
+      propertyPath: _rtsCamera
+      value: 
+      objectReference: {fileID: 1102177230073180388}
+    - target: {fileID: 974630090486601915, guid: 72733c1aca936c346b5cd4b47e8867ee, type: 3}
+      propertyPath: _rtsCameraRig
+      value: 
+      objectReference: {fileID: 7267962720907064602}
     - target: {fileID: 974630090486601915, guid: 72733c1aca936c346b5cd4b47e8867ee, type: 3}
       propertyPath: _orbitalCamera
       value: 

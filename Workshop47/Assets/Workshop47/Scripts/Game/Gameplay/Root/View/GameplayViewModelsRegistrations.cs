@@ -1,7 +1,6 @@
-﻿using Melador.PlayerInput;
-using Workshop47.Scripts.DI;
+﻿using Workshop47.Scripts.DI;
+using Workshop47.Scripts.Game.Gameplay.Input;
 using Workshop47.Scripts.Game.Gameplay.Services;
-using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.Gameplay.View.UI;
 
 namespace Workshop47.Scripts.Game.Gameplay.Root.View
@@ -10,7 +9,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
     {
         public static void Register(DIContainer container)
         {
-            var playerInputProvider = container.Resolve<PlayerInputProvider>();
+            var inputContextManager = container.Resolve<InputContextManager>();
             var charactersService = container.Resolve<CharactersService>();
             var gameWorldService = container.Resolve<GameWorldService>();
             var playerService = container.Resolve<PlayerService>();
@@ -19,7 +18,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
 
             var gameplayUIManager = new GameplayUIManager(container);
             container.RegisterFactory(c => gameplayUIManager).AsSingle();
-            container.RegisterFactory(c => new UIGameplayRootViewModel(playerInputProvider.InteractionsInput, onInteractablesOverlap)).AsSingle();
+            container.RegisterFactory(c => new UIGameplayRootViewModel(inputContextManager.InteractionsInput, onInteractablesOverlap)).AsSingle();
             container.RegisterFactory(c => new WorldGameplayRootViewModel(
                 charactersService, gameWorldService, playerService, buildingService)).AsSingle();
         }

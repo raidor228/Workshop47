@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using Melador.PlayerController.MovementController.Settings;
 using Melador.PlayerController.MovementController.States.Handlers;
-using Melador.PlayerInput.Modules;
 using UnityEngine;
 using Workshop47.Scripts.Fsm;
+using Workshop47.Scripts.Game.Gameplay.Input;
 
 namespace Melador.PlayerController.MovementController.States.Root
 {
@@ -14,7 +14,7 @@ namespace Melador.PlayerController.MovementController.States.Root
         public Transform PlayerRootTransform => _fsm.Controller.RootTransform;
         public CharacterController CharacterController => _fsm.Controller.CharacterController;
         public PlayerSettings PlayerSettings => _fsm.Controller.PlayerSettings;
-        public PlayerMovementInput MovementInput => _fsm.Controller.PlayerInputProvider.MovementInput;
+        public PlayerMovementInput MovementInput => _fsm.Controller.InputContextManager.MovementInput;
 
         public MovementHandler MovementHandler { get; }
         public SlopeHandler SlopeHandler { get; }

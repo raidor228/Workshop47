@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Melador.PlayerInput;
 using R3;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Common;
@@ -8,6 +7,8 @@ using Workshop47.Scripts.Game.Gameplay.Services;
 using Workshop47.Scripts.Game.Settings;
 using Workshop47.Scripts.Game.Gameplay.Commands;
 using Workshop47.Scripts.Game.Gameplay.Commands.Handlers;
+using Workshop47.Scripts.Game.Gameplay.Input;
+using Workshop47.Scripts.Game.Gameplay.Input.States;
 using Workshop47.Scripts.Game.State;
 using Workshop47.Scripts.Game.State.Commands;
 
@@ -21,7 +22,8 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             var gameState = gameStateProvider.GameState;
             var settingsProvider = container.Resolve<ISettingsProvider>();
             var gameSettings = settingsProvider.GameSettings;
-            var playerInputProvider = container.Resolve<PlayerInputProvider>();
+            var inputContextManager = container.Resolve<InputContextManager>();
+            var inputModesHandler = container.Resolve<InputModesHandler>();
             
             container.RegisterInstance(AppConstants.EXIT_SCENE_REQUEST_TAG, new Subject<Unit>());
 
@@ -51,9 +53,9 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             container.RegisterFactory(_ => charactersService).AsSingle();
             
             var playerService = new PlayerService(gameState.Player, 
-                gameSettings.EntitiesSettings.Player, playerInputProvider, cmd);
+                gameSettings.EntitiesSettings.Player, inputContextManager, cmd);
             container.RegisterFactory(_ => playerService).AsSingle();
-            playerService.EnablePlayerInput(true);
+            inputModesHandler.SetState<PlayerModeState>();
             
             var loadingMapSettings = gameSettings.MapsSettings.Maps.First(m => m.MapId == loadingMapId);
             var gameWorldService = new GameWorldService(loadingMapSettings.GameWorldSettings, gameSettings.BlocksSettings, cmd);

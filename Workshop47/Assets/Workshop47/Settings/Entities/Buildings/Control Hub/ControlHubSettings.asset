@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ControlHubSettings
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings.BuildingSettings
   <EntityType>k__BackingField: 3
-  <ConfigId>k__BackingField: control_hub
+  <ConfigId>k__BackingField: controlhub
   <TitleLid>k__BackingField: 
   <DescriptionLid>k__BackingField: 
   <PrefabPath>k__BackingField: 

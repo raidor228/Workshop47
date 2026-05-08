@@ -1,5 +1,6 @@
 ﻿using System;
 using R3;
+using Workshop47.Scripts.Game.Gameplay.Input;
 
 namespace Workshop47.Scripts.MVVM.UI
 {

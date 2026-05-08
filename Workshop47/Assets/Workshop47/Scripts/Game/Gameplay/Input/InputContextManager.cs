@@ -1,28 +1,29 @@
-using System;
+﻿using System;
 using Melador.PlayerController.CameraController.Settings;
 using Melador.PlayerController.MovementController.Settings;
-using Melador.PlayerInput.Modules;
 using UnityEngine;
 using Workshop47.Input;
 using Workshop47.Scripts.Game.Player.InteractionSystem.Settings;
 
-namespace Melador.PlayerInput
+namespace Workshop47.Scripts.Game.Gameplay.Input
 {
-    public class PlayerInputProvider : IDisposable
+    public class InputContextManager : IDisposable
     {
         public readonly InteractionsInput InteractionsInput;
         public readonly PlayerMovementInput MovementInput;
         public readonly PlayerCameraInput CameraInput;
+        public readonly PlayerRtsCameraInput RtsCameraInput;
         
         private readonly PlayerInputActions _playerInputActions;
 
-        public PlayerInputProvider(PlayerSettings playerSettings, CameraSettings cameraSettings, 
+        public InputContextManager(PlayerSettings playerSettings, CameraSettings cameraSettings, 
             InteractionsSettings interactionsSettings)
         {
             _playerInputActions = new PlayerInputActions();
 
             MovementInput = new PlayerMovementInput(_playerInputActions, playerSettings);
             CameraInput = new PlayerCameraInput(_playerInputActions, cameraSettings);
+            RtsCameraInput = new PlayerRtsCameraInput(_playerInputActions, cameraSettings);
             InteractionsInput = new InteractionsInput(_playerInputActions, interactionsSettings);
         }
 
@@ -48,10 +49,20 @@ namespace Melador.PlayerInput
             {
                 CameraInput.Disable();
             }
+            if ((inputModules & InputModuleType.RtsCamera) != 0)
+            {
+                RtsCameraInput.Disable();
+            }
             if ((inputModules & InputModuleType.Interactions) != 0)
             {
                 InteractionsInput.Disable();
             }
+        }
+        
+        public void DisableOnly(InputModuleType inputModules)
+        {
+            Enable(InputModuleType.All);
+            Disable(inputModules);
         }
         
         public void Enable(InputModuleType inputModules)
@@ -64,10 +75,20 @@ namespace Melador.PlayerInput
             {
                 CameraInput.Enable();
             }
+            if ((inputModules & InputModuleType.RtsCamera) != 0)
+            {
+                RtsCameraInput.Enable();
+            }
             if ((inputModules & InputModuleType.Interactions) != 0)
             {
                 InteractionsInput.Enable();
             }
+        }
+
+        public void EnableOnly(InputModuleType inputModules)
+        {
+            Disable(InputModuleType.All);
+            Enable(inputModules);
         }
         
         public void Dispose()

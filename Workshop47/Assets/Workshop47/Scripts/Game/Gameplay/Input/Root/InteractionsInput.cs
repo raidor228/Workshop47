@@ -1,10 +1,8 @@
-using Melador.PlayerController.CameraController.Settings;
-using UnityEngine;
 using UnityEngine.InputSystem;
 using Workshop47.Input;
 using Workshop47.Scripts.Game.Player.InteractionSystem.Settings;
 
-namespace Melador.PlayerInput.Modules
+namespace Workshop47.Scripts.Game.Gameplay.Input
 {
     public class InteractionsInput
     {

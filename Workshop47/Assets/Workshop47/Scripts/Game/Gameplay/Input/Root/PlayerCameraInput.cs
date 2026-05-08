@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Workshop47.Input;
 
-namespace Melador.PlayerInput.Modules
+namespace Workshop47.Scripts.Game.Gameplay.Input
 {
     public class PlayerCameraInput
     {

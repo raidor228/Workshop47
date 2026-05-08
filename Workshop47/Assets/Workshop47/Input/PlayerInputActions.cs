@@ -437,6 +437,138 @@ namespace Workshop47.Input
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""RtsCamera"",
+            ""id"": ""5046a627-f3a0-4ae8-8f2a-e3e1746f8538"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""0f598218-4b14-4d8b-a712-881f98e46bba"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""4979804a-fa2d-45ff-a1b1-199cd3c6adad"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""6216b020-259c-4881-8603-00d63f56a163"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""36c04e39-c343-4fc1-ac86-145732975f04"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""7716420e-686e-40c0-9248-e03925c258e1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""1f99a1e2-7b20-4026-944f-473b30ba6ac7"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1e937892-6040-4df2-83e6-a0716b4f68c0"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""db036aea-2c0d-4162-83b0-b4951691e748"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4f8e3b1f-b653-4f20-8549-0f027de69a7a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b58f134-9dcd-43b3-9e26-e0fac0e13c1e"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89bbc521-40df-4c17-a61f-62a55dc9537d"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa9e2ef1-24a8-4c88-b3df-8cc26fa99a6c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -461,6 +593,12 @@ namespace Workshop47.Input
             m_Interactions_SelectNext = m_Interactions.FindAction("SelectNext", throwIfNotFound: true);
             m_Interactions_SelectPrevious = m_Interactions.FindAction("SelectPrevious", throwIfNotFound: true);
             m_Interactions_Interact = m_Interactions.FindAction("Interact", throwIfNotFound: true);
+            // RtsCamera
+            m_RtsCamera = asset.FindActionMap("RtsCamera", throwIfNotFound: true);
+            m_RtsCamera_Movement = m_RtsCamera.FindAction("Movement", throwIfNotFound: true);
+            m_RtsCamera_Zoom = m_RtsCamera.FindAction("Zoom", throwIfNotFound: true);
+            m_RtsCamera_RotateLeft = m_RtsCamera.FindAction("RotateLeft", throwIfNotFound: true);
+            m_RtsCamera_RotateRight = m_RtsCamera.FindAction("RotateRight", throwIfNotFound: true);
         }
 
         ~@PlayerInputActions()
@@ -468,6 +606,7 @@ namespace Workshop47.Input
             UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, PlayerInputActions.Movement.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_Camera.enabled, "This will cause a leak and performance issues, PlayerInputActions.Camera.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_Interactions.enabled, "This will cause a leak and performance issues, PlayerInputActions.Interactions.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_RtsCamera.enabled, "This will cause a leak and performance issues, PlayerInputActions.RtsCamera.Disable() has not been called.");
         }
 
         /// <summary>
@@ -948,6 +1087,135 @@ namespace Workshop47.Input
         /// Provides a new <see cref="InteractionsActions" /> instance referencing this action map.
         /// </summary>
         public InteractionsActions @Interactions => new InteractionsActions(this);
+
+        // RtsCamera
+        private readonly InputActionMap m_RtsCamera;
+        private List<IRtsCameraActions> m_RtsCameraActionsCallbackInterfaces = new List<IRtsCameraActions>();
+        private readonly InputAction m_RtsCamera_Movement;
+        private readonly InputAction m_RtsCamera_Zoom;
+        private readonly InputAction m_RtsCamera_RotateLeft;
+        private readonly InputAction m_RtsCamera_RotateRight;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "RtsCamera".
+        /// </summary>
+        public struct RtsCameraActions
+        {
+            private @PlayerInputActions m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public RtsCameraActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "RtsCamera/Movement".
+            /// </summary>
+            public InputAction @Movement => m_Wrapper.m_RtsCamera_Movement;
+            /// <summary>
+            /// Provides access to the underlying input action "RtsCamera/Zoom".
+            /// </summary>
+            public InputAction @Zoom => m_Wrapper.m_RtsCamera_Zoom;
+            /// <summary>
+            /// Provides access to the underlying input action "RtsCamera/RotateLeft".
+            /// </summary>
+            public InputAction @RotateLeft => m_Wrapper.m_RtsCamera_RotateLeft;
+            /// <summary>
+            /// Provides access to the underlying input action "RtsCamera/RotateRight".
+            /// </summary>
+            public InputAction @RotateRight => m_Wrapper.m_RtsCamera_RotateRight;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_RtsCamera; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="RtsCameraActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(RtsCameraActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="RtsCameraActions" />
+            public void AddCallbacks(IRtsCameraActions instance)
+            {
+                if (instance == null || m_Wrapper.m_RtsCameraActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_RtsCameraActionsCallbackInterfaces.Add(instance);
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
+                @RotateLeft.started += instance.OnRotateLeft;
+                @RotateLeft.performed += instance.OnRotateLeft;
+                @RotateLeft.canceled += instance.OnRotateLeft;
+                @RotateRight.started += instance.OnRotateRight;
+                @RotateRight.performed += instance.OnRotateRight;
+                @RotateRight.canceled += instance.OnRotateRight;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="RtsCameraActions" />
+            private void UnregisterCallbacks(IRtsCameraActions instance)
+            {
+                @Movement.started -= instance.OnMovement;
+                @Movement.performed -= instance.OnMovement;
+                @Movement.canceled -= instance.OnMovement;
+                @Zoom.started -= instance.OnZoom;
+                @Zoom.performed -= instance.OnZoom;
+                @Zoom.canceled -= instance.OnZoom;
+                @RotateLeft.started -= instance.OnRotateLeft;
+                @RotateLeft.performed -= instance.OnRotateLeft;
+                @RotateLeft.canceled -= instance.OnRotateLeft;
+                @RotateRight.started -= instance.OnRotateRight;
+                @RotateRight.performed -= instance.OnRotateRight;
+                @RotateRight.canceled -= instance.OnRotateRight;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RtsCameraActions.UnregisterCallbacks(IRtsCameraActions)" />.
+            /// </summary>
+            /// <seealso cref="RtsCameraActions.UnregisterCallbacks(IRtsCameraActions)" />
+            public void RemoveCallbacks(IRtsCameraActions instance)
+            {
+                if (m_Wrapper.m_RtsCameraActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="RtsCameraActions.AddCallbacks(IRtsCameraActions)" />
+            /// <seealso cref="RtsCameraActions.RemoveCallbacks(IRtsCameraActions)" />
+            /// <seealso cref="RtsCameraActions.UnregisterCallbacks(IRtsCameraActions)" />
+            public void SetCallbacks(IRtsCameraActions instance)
+            {
+                foreach (var item in m_Wrapper.m_RtsCameraActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_RtsCameraActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="RtsCameraActions" /> instance referencing this action map.
+        /// </summary>
+        public RtsCameraActions @RtsCamera => new RtsCameraActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Movement" which allows adding and removing callbacks.
         /// </summary>
@@ -1069,6 +1337,42 @@ namespace Workshop47.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnInteract(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "RtsCamera" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="RtsCameraActions.AddCallbacks(IRtsCameraActions)" />
+        /// <seealso cref="RtsCameraActions.RemoveCallbacks(IRtsCameraActions)" />
+        public interface IRtsCameraActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMovement(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Zoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnZoom(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "RotateLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRotateLeft(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "RotateRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRotateRight(InputAction.CallbackContext context);
         }
     }
 }

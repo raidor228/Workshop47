@@ -1,7 +1,6 @@
-﻿using Melador.PlayerInput;
-using Melador.PlayerInput.Modules;
-using R3;
+﻿using R3;
 using UnityEngine;
+using Workshop47.Scripts.Game.Gameplay.Input;
 using Workshop47.Scripts.Game.Gameplay.View.Player;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Player;
 using Workshop47.Scripts.Game.State.Commands;
@@ -12,7 +11,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
     public class PlayerService
     {
         public ReadOnlyReactiveProperty<PlayerViewModel> Player => _player;
-        public readonly PlayerInputProvider PlayerInputProvider;
+        public readonly InputContextManager InputContextManager;
         
         private readonly ReactiveProperty<PlayerViewModel> _player = new();
         
@@ -20,10 +19,10 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         private readonly ICommandProcessor _cmd;
         
         public PlayerService(ReadOnlyReactiveProperty<PlayerEntity> playerEntity, 
-            PlayerSettings playerSettings, PlayerInputProvider playerInputProvider, ICommandProcessor cmd)
+            PlayerSettings playerSettings, InputContextManager inputContextManager, ICommandProcessor cmd)
         {
             _cmd = cmd;
-            PlayerInputProvider = playerInputProvider;
+            InputContextManager = inputContextManager;
             
             _playerSettings = playerSettings;
             CreatePlayerViewModel(playerEntity.CurrentValue);
@@ -33,12 +32,10 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         {
             
         }
-        
-        public void EnablePlayerInput(bool enable)
+
+        public void SwitchRtsMode()
         {
-            PlayerInputProvider.Enable(InputModuleType.Movement);
-            PlayerInputProvider.Enable(InputModuleType.Camera);
-            PlayerInputProvider.Enable(InputModuleType.Interactions);
+            _player.CurrentValue.OnSwitchRtsMode.OnNext(Unit.Default);
         }
         
         private void CreatePlayerViewModel(PlayerEntity playerEntity)

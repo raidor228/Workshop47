@@ -7,6 +7,7 @@ using Workshop47.Scripts.Game.Gameplay.View.Buildings;
 using Workshop47.Scripts.Game.Gameplay.View.Characters;
 using Workshop47.Scripts.Game.Gameplay.View.Chunks;
 using Workshop47.Scripts.Game.Gameplay.View.Player;
+using Object = UnityEngine.Object;
 
 namespace Workshop47.Scripts.Game.Gameplay.Root.View
 {
@@ -16,11 +17,17 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
         private readonly Dictionary<int, BuildingBinder> _createdBuildingsMap = new();
         private readonly Dictionary<Vector2Int, ChunkBinder> _createdChunksMap = new();
         private PlayerBinder _createdPlayer;
-        
+
+        private Transform _chunksParent;
         private readonly CompositeDisposable _disposables = new();
 
         private WorldGameplayRootViewModel _viewModel;
-        
+
+        private void Awake()
+        {
+            _chunksParent = new GameObject("Chunks").transform;
+        }
+
         public void Bind(WorldGameplayRootViewModel viewModel)
         {
             _viewModel = viewModel;
@@ -73,7 +80,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
         {
             var prefabChunkPath = $"Prefabs/Gameplay/Chunks/ChunkRenderer";
             var chunkBinder = Resources.Load<ChunkBinder>(prefabChunkPath);
-            var createdChunk = Instantiate(chunkBinder);
+            var createdChunk = Instantiate(chunkBinder, _chunksParent);
             
             createdChunk.Bind(chunkViewModel);
 

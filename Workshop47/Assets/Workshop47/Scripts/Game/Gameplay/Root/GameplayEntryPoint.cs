@@ -1,5 +1,4 @@
-﻿using System;
-using R3;
+﻿using R3;
 using UnityEngine;
 using Workshop47.Scripts.DI;
 using Workshop47.Scripts.Game.Common;
@@ -7,7 +6,6 @@ using Workshop47.Scripts.Game.Gameplay.Root.View;
 using Workshop47.Scripts.Game.Gameplay.View.UI;
 using Workshop47.Scripts.Game.MainMenu.Root;
 using Workshop47.Scripts.Game.Root;
-using Workshop47.Scripts.Game.Gameplay.Root;
 
 namespace Workshop47.Scripts.Game.Gameplay.Root
 {
@@ -16,7 +14,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
         [SerializeField] private UIGameplayRootBinder _sceneUIRootPrefab;
         [SerializeField] private WorldGameplayRootBinder _worldRootBinder;
 
-        private CompositeDisposable _disposable;
+        private readonly CompositeDisposable _disposable = new();
         
         public Observable<GameplayExitParams> Run(DIContainer gameplayContainer, GameplayEnterParams enterParams)
         {

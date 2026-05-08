@@ -66,3 +66,18 @@ MonoBehaviour:
   <FreeLookSettings>k__BackingField:
     <IsMechanicAllowed>k__BackingField: 1
     <FreeLookAction>k__BackingField: {fileID: 4446420413893421910, guid: 70105f090d597944585c590371dbf571, type: 3}
+  <RTSSettings>k__BackingField:
+    <IsMechanicAllowed>k__BackingField: 1
+    <MovementAction>k__BackingField: {fileID: -1721460015611404267, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <ZoomAction>k__BackingField: {fileID: -7944667506649119012, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <RotateLeftAction>k__BackingField: {fileID: -1722424103789145618, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <RotateRightAction>k__BackingField: {fileID: -3373607374150450577, guid: 70105f090d597944585c590371dbf571, type: 3}
+    <UseEdgeScrolling>k__BackingField: 1
+    <EdgeWidth>k__BackingField: 10
+    <MoveSpeed>k__BackingField: 20
+    <RotationSpeed>k__BackingField: 100
+    <MaxZoom>k__BackingField: 40
+    <MinZoom>k__BackingField: 5
+    <ZoomSpeed>k__BackingField: 200
+    <XLimits>k__BackingField: {x: -10, y: 10}
+    <ZLimits>k__BackingField: {x: -10, y: 10}

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Melador.PlayerInput;
 using R3;
 using UnityEngine;
+using Workshop47.Scripts.Game.Gameplay.Input;
 using Workshop47.Scripts.Game.Gameplay.Services;
 using Workshop47.Scripts.Game.Gameplay.View.Interactable;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Player;
@@ -15,9 +15,10 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Player
         public readonly string ConfigId;
         public readonly string Name;
 
-        public readonly PlayerInputProvider PlayerInputProvider;
+        public readonly InputContextManager InputContextManager;
 
         public readonly Subject<List<IInteractable>> OnInteractablesOverlap = new();
+        public readonly Subject<Unit> OnSwitchRtsMode = new();
         
         public ReadOnlyReactiveProperty<Vector3> Position => _position;
         public ReadOnlyReactiveProperty<Vector3> Rotation => _rotation;
@@ -49,7 +50,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Player
             _playerSettings = playerSettings;
             _playerService = playerService;
             
-            PlayerInputProvider = playerService.PlayerInputProvider;
+            InputContextManager = playerService.InputContextManager;
             
             foreach (var playerLevelSettings in playerSettings.Levels)
             {

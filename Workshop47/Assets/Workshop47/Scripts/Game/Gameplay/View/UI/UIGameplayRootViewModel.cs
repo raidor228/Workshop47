@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Melador.PlayerInput.Modules;
 using ObservableCollections;
 using R3;
 using UnityEngine.InputSystem;
+using Workshop47.Scripts.Game.Gameplay.Input;
 using Workshop47.Scripts.Game.Gameplay.View.Interactable;
 using Workshop47.Scripts.MVVM.UI;
 
