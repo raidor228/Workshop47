@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: OakPlanks
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.World.BlockSettings
   <BlockType>k__BackingField: 4
-  <PixelsOffsets>k__BackingField: {x: 0, y: 0}
+  <PixelsOffsets>k__BackingField: {x: 109, y: 203}

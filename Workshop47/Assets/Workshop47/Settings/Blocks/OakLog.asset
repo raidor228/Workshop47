@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb98bda651ac472ea701c4a1dd0b265a, type: 3}
   m_Name: OakLog
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Gameplay.Blocks.BlockSidesSettings
-  <BlockType>k__BackingField: 0
-  <PixelsOffsets>k__BackingField: {x: 0, y: 0}
-  <PixelOffsetUp>k__BackingField: {x: 0, y: 0}
-  <PixelOffsetDown>k__BackingField: {x: 0, y: 0}
+  <BlockType>k__BackingField: 5
+  <PixelsOffsets>k__BackingField: {x: 77, y: 203}
+  <PixelOffsetUp>k__BackingField: {x: 93, y: 203}
+  <PixelOffsetDown>k__BackingField: {x: 93, y: 203}
