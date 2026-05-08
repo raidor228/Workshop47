@@ -11,9 +11,9 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
 {
     public class GameWorldService
     {
-        public IObservableCollection<ChunkViewModel> AllEditedChunks => _allEditedChunks;
+        public IObservableCollection<ChunkViewModel> AllChunks => _allChunks;
         
-        private readonly ObservableList<ChunkViewModel> _allEditedChunks = new();
+        private readonly ObservableList<ChunkViewModel> _allChunks = new();
         private readonly Dictionary<Vector2Int, ChunkViewModel> _chunksMap = new();
         private readonly Dictionary<BlockType, BlockSettings> _blocksSettingsMap = new();
         private readonly GameWorldSettings _gameWorldSettings;
@@ -70,7 +70,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         {
             var chunkViewModel = new ChunkViewModel(chunk, _blocksSettings, this);
             
-            _allEditedChunks.Add(chunkViewModel);
+            _allChunks.Add(chunkViewModel);
             _chunksMap[chunk.Position] = chunkViewModel;
         }
 
@@ -78,7 +78,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         {
             if (_chunksMap.TryGetValue(chunk.Position, out var chunkViewModel))
             {
-                _allEditedChunks.Remove(chunkViewModel);
+                _allChunks.Remove(chunkViewModel);
                 _chunksMap.Remove(chunk.Position);
             }
         }

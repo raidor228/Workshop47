@@ -145,7 +145,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
                 blockPosition.y >= 0 && blockPosition.y < ChunkData.ChunkHeight &&
                 blockPosition.z >= 0 && blockPosition.z < ChunkData.ChunkWidth)
             {
-                return _chunkViewModel.GetBlock(blockPosition.x, blockPosition.y, blockPosition.z);
+                return _chunkViewModel.GetBlock(blockPosition);
             }
             else
             {
@@ -162,7 +162,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
                     }
                     
                     blockPosition.x += ChunkData.ChunkWidth;
-                    return _leftChunk.GetBlock(blockPosition.x, blockPosition.y, blockPosition.z);
+                    return _leftChunk.GetBlock(blockPosition);
                 }
                 else if (blockPosition.x >= ChunkData.ChunkWidth)
                 {
@@ -172,7 +172,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
                     }
                     
                     blockPosition.x -= ChunkData.ChunkWidth;
-                    return _rightChunk.GetBlock(blockPosition.x, blockPosition.y, blockPosition.z);
+                    return _rightChunk.GetBlock(blockPosition);
                 }
                 
                 if (blockPosition.z < 0)
@@ -183,7 +183,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
                     }
                     
                     blockPosition.z += ChunkData.ChunkWidth;
-                    return _backChunk.GetBlock(blockPosition.x, blockPosition.y, blockPosition.z);
+                    return _backChunk.GetBlock(blockPosition);
                 }
                 else if (blockPosition.z >= ChunkData.ChunkWidth)
                 {
@@ -193,7 +193,7 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
                     }
                     
                     blockPosition.z -= ChunkData.ChunkWidth;
-                    return _forwardChunk.GetBlock(blockPosition.x, blockPosition.y, blockPosition.z);
+                    return _forwardChunk.GetBlock(blockPosition);
                 }
 
                 return BlockType.Air;

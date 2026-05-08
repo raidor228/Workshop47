@@ -22,10 +22,10 @@ namespace Workshop47.Scripts.Game.Settings.Gameplay.Worlds
     public class ChunkEntry
     {
         [field: SerializeField] public Vector2Int Position { get; private set; }
-        [field: SerializeField] public BlockType[] Blocks { get; private set; }
+        [field: SerializeField] public List<BlockData> Blocks { get; private set; }
         
 #if UNITY_EDITOR
-        public void Initialize(Vector2Int position, BlockType[] blocks)
+        public void Initialize(Vector2Int position, List<BlockData> blocks)
         {
             Position = position;
             Blocks = blocks;

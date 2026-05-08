@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Workshop47.Scripts.Game.State.Chunks
 {
@@ -9,12 +10,6 @@ namespace Workshop47.Scripts.Game.State.Chunks
         public const int ChunkHeight = 128;
         
         public Vector2Int Position { get; set; }
-        public BlockType[] Blocks { get; set; }
-
-        public BlockType GetBlock(int x, int y, int z)
-        {
-            int index = x + y * ChunkWidthSq + z * ChunkWidth;
-            return Blocks[index];
-        }
+        public List<BlockData> Blocks { get; set; }
     }
 }

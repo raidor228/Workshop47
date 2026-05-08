@@ -10,9 +10,9 @@ namespace Workshop47.Scripts.World.Editor
 {
     public static class MinecraftWorldParser
     {
-        public static Dictionary<Vector2Int, BlockType[]> ParseWorld(string regionsPath)
+        public static Dictionary<Vector2Int, List<BlockData>> ParseWorld(string regionsPath)
         {
-            var result = new Dictionary<Vector2Int, BlockType[]>();
+            var result = new Dictionary<Vector2Int, List<BlockData>>();
             
             var files = Directory.GetFiles(regionsPath, "r.*.*.mca");
             foreach (var file in files)
@@ -23,7 +23,7 @@ namespace Workshop47.Scripts.World.Editor
             return result;
         }
 
-        private static void ParseRegion(string filePath, Dictionary<Vector2Int, BlockType[]> dict)
+        private static void ParseRegion(string filePath, Dictionary<Vector2Int, List<BlockData>> dict)
         {
             using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             using var br = new BinaryReader(fs);
@@ -62,7 +62,7 @@ namespace Workshop47.Scripts.World.Editor
             }
         }
 
-        private static void ParseChunk(NbtFile nbt, Dictionary<Vector2Int, BlockType[]> dict)
+        private static void ParseChunk(NbtFile nbt, Dictionary<Vector2Int, List<BlockData>> dict)
         {
             var root = nbt.RootTag;
             var level = root["Level"] ?? root;
@@ -76,7 +76,7 @@ namespace Workshop47.Scripts.World.Editor
                 return;
             }
 
-            var blocks = new BlockType[ChunkData.ChunkWidthSq * ChunkData.ChunkHeight];
+            var blocks = new List<BlockData>();
             
             var sectionsList = sections as NbtList;
             if (sectionsList == null)
@@ -141,13 +141,20 @@ namespace Workshop47.Scripts.World.Editor
                     int worldY = sectionY * 16 + y;
                     if (worldY >= 0 && worldY < ChunkData.ChunkHeight)
                     {
-                        int index = x + worldY * ChunkData.ChunkWidthSq + z * ChunkData.ChunkWidth;
-                        blocks[index] = ConvertBlock(name);
+                        BlockType blockType = ConvertBlock(name);
+                        if (blockType != BlockType.Air)
+                        {
+                            var blockData = new BlockData(new Vector3Int(x, worldY, z), blockType);
+                            blocks.Add(blockData);
+                        }
                     }
                 }
             }
 
-            dict[new Vector2Int(chunkX, chunkZ)] = blocks;
+            if (blocks.Count != 0)
+            {
+                dict[new Vector2Int(chunkX, chunkZ)] = blocks;
+            }
         }
 
         private static int GetBlockIndex(long[] data, int index, int bitsPerBlock)

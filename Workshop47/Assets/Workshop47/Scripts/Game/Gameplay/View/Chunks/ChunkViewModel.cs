@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Workshop47.Scripts.Game.Gameplay.Services;
 using Workshop47.Scripts.Game.Settings.Gameplay.Blocks;
 using Workshop47.Scripts.Game.State.Chunks;
@@ -8,12 +9,14 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
     public class ChunkViewModel
     {
         public readonly Vector2Int Position;
-        public readonly BlockType[] Blocks;
+        public readonly List<BlockData> Blocks;
         
         public ChunkViewModel LeftChunk { get; private set; }
         public ChunkViewModel RightChunk { get; private set; }
         public ChunkViewModel ForwardChunk { get; private set; }
         public ChunkViewModel BackChunk { get; private set; }
+
+        private readonly Dictionary<Vector3Int, BlockType> _blocksMap = new();
         
         private readonly Chunk _chunk;
         private readonly BlocksSettings _blocksSettings;
@@ -28,6 +31,11 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
             _chunk = chunk;
             _blocksSettings = blocksSettings;
             _gameWorldService = gameWorldService;
+
+            foreach (var blockData in Blocks)
+            {
+                _blocksMap[blockData.Position] = blockData.BlockType;
+            }
         }
         
         public BlockSettings GetBlockSettings(BlockType blockType)
@@ -35,9 +43,14 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Chunks
             return _gameWorldService.GetBlockSettings(blockType);
         }
         
-        public BlockType GetBlock(int x, int y, int z)
+        public BlockType GetBlock(Vector3Int blockPosition)
         {
-            return _chunk.GetBlock(x, y, z);
+            if (_blocksMap.TryGetValue(blockPosition, out var blockType))
+            {
+                return blockType;
+            }
+
+            return BlockType.Air;
         }
         
         public void SetNeighbours(ChunkViewModel left, ChunkViewModel right, 

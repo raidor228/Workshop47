@@ -23,7 +23,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root.View
         {
             AllCharacters = charactersService.AllCharacters;
             AllBuildings = buildingsService.AllBuildings;
-            AllChunks = gameWorldService.AllEditedChunks;
+            AllChunks = gameWorldService.AllChunks;
             Player = playerService.Player;
 
             _buildingsService = buildingsService;
