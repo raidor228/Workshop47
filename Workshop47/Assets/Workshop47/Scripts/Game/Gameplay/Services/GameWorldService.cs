@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ObservableCollections;
 using UnityEngine;
+using Workshop47.Scripts.Game.Gameplay.View.Buildings;
 using Workshop47.Scripts.Game.Gameplay.View.Chunks;
 using Workshop47.Scripts.Game.Settings.Gameplay.Blocks;
 using Workshop47.Scripts.Game.Settings.Gameplay.Worlds;
@@ -33,6 +34,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
             }
             
             ChunkRenderer.InitTriangles();
+            BuildingRenderer.InitTriangles();
             
             foreach (var chunkEntry in gameWorldSettings.Chunks)
             {

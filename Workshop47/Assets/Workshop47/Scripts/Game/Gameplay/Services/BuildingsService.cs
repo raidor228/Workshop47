@@ -6,8 +6,10 @@ using UnityEngine;
 using Workshop47.Scripts.Game.Gameplay.Commands;
 using Workshop47.Scripts.Game.Gameplay.Services.Features;
 using Workshop47.Scripts.Game.Gameplay.View.Buildings;
+using Workshop47.Scripts.Game.Settings.Gameplay.Blocks;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings;
+using Workshop47.Scripts.Game.State.Chunks;
 using Workshop47.Scripts.Game.State.Commands;
 using Workshop47.Scripts.Game.State.Entities;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings;
@@ -21,17 +23,24 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
         private readonly ObservableList<BuildingViewModel> _allBuildings = new();
         private readonly Dictionary<int, BuildingViewModel> _buildingsMap = new();
         private readonly Dictionary<string, BuildingSettings> _buildingSettingsMap = new();
+        private readonly Dictionary<BlockType, BlockSettings> _blocksSettingsMap = new();
         private readonly List<IFeatureSystem> _featureSystems = new();
         private readonly ICommandProcessor _cmd;
         
         public BuildingsService(IObservableCollection<Entity> entities, 
-            EntitiesSettings entitiesSettings, ResourcesService resourcesService, ICommandProcessor cmd)
+            EntitiesSettings entitiesSettings, ResourcesService resourcesService, 
+            BlocksSettings blocksSettings, ICommandProcessor cmd)
         {
             _cmd = cmd;
             
             foreach (var buildingSettings in entitiesSettings.Buildings)
             {
                 _buildingSettingsMap[buildingSettings.ConfigId] = buildingSettings;
+            }
+            
+            foreach (var blockSettings in blocksSettings.Blocks)
+            {
+                _blocksSettingsMap[blockSettings.BlockType] = blockSettings;
             }
 
             foreach (var entity in entities)
@@ -95,6 +104,11 @@ namespace Workshop47.Scripts.Game.Gameplay.Services
             }
         }
 
+        public BlockSettings GetBlockSettings(BlockType blockType)
+        {
+            return _blocksSettingsMap[blockType];
+        }
+        
         private void CreateBuildingViewModel(BuildingEntity buildingEntity)
         {
             var buildingSettings = _buildingSettingsMap[buildingEntity.ConfigId];

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d771fcc89b3c45ae9bf78f86151966e3, type: 3}
-  m_Name: Stone
+  m_Name: OakPlanks
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.World.BlockSettings
-  <BlockType>k__BackingField: 3
-  <PixelsOffsets>k__BackingField: {x: 96, y: 80}
+  <BlockType>k__BackingField: 4
+  <PixelsOffsets>k__BackingField: {x: 0, y: 0}

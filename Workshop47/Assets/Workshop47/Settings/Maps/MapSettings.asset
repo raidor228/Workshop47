@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MapSettings
   m_EditorClassIdentifier: Assembly-CSharp::Workshop47.Scripts.Game.Settings.Gameplay.Maps.MapSettings
   MapId: 0
-  GameWorldSettings: {fileID: 11400000, guid: d3bec3032ca7a62449e06ee018814d97, type: 2}
+  GameWorldSettings: {fileID: 11400000, guid: 88d10a1084ef6af4bb52f9e9812db4f2, type: 2}
   InitialStateSettings:
     Entities:
     - <EntityType>k__BackingField: 3

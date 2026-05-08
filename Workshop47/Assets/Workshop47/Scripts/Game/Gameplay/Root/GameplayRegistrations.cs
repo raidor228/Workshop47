@@ -65,7 +65,7 @@ namespace Workshop47.Scripts.Game.Gameplay.Root
             container.RegisterFactory(_ => resourcesService).AsSingle();
             
             var buildingService = new BuildingsService(loadingMap.Entities, gameSettings.EntitiesSettings, 
-                resourcesService, cmd);
+                resourcesService, gameSettings.BlocksSettings, cmd);
             container.RegisterFactory(_ => buildingService).AsSingle();
         }
     }

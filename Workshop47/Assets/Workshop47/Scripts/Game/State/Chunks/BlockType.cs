@@ -6,8 +6,7 @@
         Grass,
         Dirt,
         Stone,
-        SnowBlock,
-        WhiteConcrete,
-        Glass,
+        OakPlanks,
+        OakLog
     }
 }

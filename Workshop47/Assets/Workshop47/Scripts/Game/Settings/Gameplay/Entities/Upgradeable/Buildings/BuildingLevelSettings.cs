@@ -9,5 +9,6 @@ namespace Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings
     public class BuildingLevelSettings : UpgradeableEntityLevelSettings
     {
         [field: SerializeField] public List<FeatureSettings> Features { get; set; }
+        [field: SerializeField] public BuildingViewSettings ViewSettings { get; set; }
     }
 }

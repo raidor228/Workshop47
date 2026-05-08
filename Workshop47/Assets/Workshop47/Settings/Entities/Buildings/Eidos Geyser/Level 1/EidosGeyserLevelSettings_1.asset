@@ -16,3 +16,4 @@ MonoBehaviour:
   <PrefabSkinPath>k__BackingField: eidosgeyser
   <Features>k__BackingField:
   - {fileID: 11400000, guid: 1664ca32c2ffffb4c9894a7800dc0e0f, type: 2}
+  <ViewSettings>k__BackingField: {fileID: 11400000, guid: 905e6c9e704ca55458ce771dcbb5fdb4, type: 2}

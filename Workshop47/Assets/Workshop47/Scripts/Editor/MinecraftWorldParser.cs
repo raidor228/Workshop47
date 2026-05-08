@@ -183,9 +183,8 @@ namespace Workshop47.Scripts.World.Editor
                 "minecraft:stone" => BlockType.Stone,
                 "minecraft:dirt" => BlockType.Dirt,
                 "minecraft:grass_block" => BlockType.Grass,
-                "minecraft:snow_block" => BlockType.SnowBlock,
-                "minecraft:white_concrete" => BlockType.WhiteConcrete,
-                "minecraft:glass" => BlockType.Glass,
+                "minecraft:oak_planks" => BlockType.OakPlanks,
+                "minecraft:oak_log" => BlockType.OakLog,
                 _ => BlockType.Air
             };
             

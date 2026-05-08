@@ -4,7 +4,9 @@ using Workshop47.Scripts.Game.Gameplay.Services;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings;
 using UnityEngine;
 using R3;
+using Workshop47.Scripts.Game.Settings.Gameplay.Blocks;
 using Workshop47.Scripts.Game.Settings.Gameplay.Entities.Buildings;
+using Workshop47.Scripts.Game.State.Chunks;
 using Workshop47.Scripts.Game.State.Entities.Upgradeable.Buildings.Root;
 
 namespace Workshop47.Scripts.Game.Gameplay.View.Buildings
@@ -48,6 +50,11 @@ namespace Workshop47.Scripts.Game.Gameplay.View.Buildings
         public BuildingLevelSettings GetLevelSettings(int level)
         {
             return _levelSettingsMap[level];
+        }
+        
+        public BlockSettings GetBlockSettings(BlockType blockType)
+        {
+            return _buildingsService.GetBlockSettings(blockType);
         }
     }
 }
